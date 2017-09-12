@@ -71,7 +71,9 @@ __heap_limit
         EXPORT  __Vectors
         EXPORT  __Vectors_End
         EXPORT  __Vectors_Size
-		
+		IMPORT  Rise_ISR
+		IMPORT  Fall_ISR
+
 __Vectors
         DCD     __initial_sp              ; Top of Stack
         DCD     Reset_Handler               ; Reset Handler
@@ -108,7 +110,7 @@ __Vectors
         DCD     ADC0SS1_Handler           ;  15: ADC Sequence 1
         DCD     ADC0SS2_Handler           ;  16: ADC Sequence 2
         DCD     ADC0SS3_Handler           ;  17: ADC Sequence 3
-        DCD     WDT0_Handler              ;  18: Watchdog timer            
+		DCD     WDT0_Handler              ;  18: Watchdog timer 	
         DCD     TIMER0A_Handler           ;  19: Timer 0 subtimer A
                 DCD     TIMER0B_Handler           ;  20: Timer 0 subtimer B
                 DCD     TIMER1A_Handler           ;  21: Timer 1 subtimer A
@@ -125,8 +127,8 @@ __Vectors
                 DCD     GPIOH_Handler             ;  32: GPIO Port H
                 DCD     UART2_Handler             ;  33: UART2 Rx and Tx
                 DCD     SSI1_Handler              ;  34: SSI1 Rx and Tx
-                DCD     TIMER3A_Handler           ;  35: Timer 3 subtimer A
-                DCD     TIMER3B_Handler           ;  36: Timer 3 subtimer B
+                DCD     Rise_ISR ;TIMER3A_Handler           ;  35: Timer 3 subtimer A
+                DCD     Fall_ISR  ;TIMER3B_Handler           ;  36: Timer 3 subtimer B
                 DCD     I2C1_Handler              ;  37: I2C1 Master and Slave
                 DCD     QEI1_Handler              ;  38: Quadrature Encoder 1
                 DCD     CAN0_Handler              ;  39: CAN0
@@ -236,7 +238,6 @@ __Vectors_Size  EQU     __Vectors_End - __Vectors
 
                 AREA    |.text|, CODE, READONLY
 
-
 ;******************************************************************************
 ;
 ; This is the code that gets called when the processor first starts execution
@@ -275,8 +276,8 @@ Reset_Handler
         ; the .data section initializers from flash to SRAM and zero fill the
         ; .bss section.
         ;
-        IMPORT  __main
-        B       __main
+        IMPORT  Start
+        B       Start     ;call user assembly language program
 
 ;******************************************************************************
 ;
@@ -555,6 +556,7 @@ PWM1_1_Handler
 PWM1_2_Handler
 PWM1_3_Handler
 PWM1_FAULT_Handler 
+
                 B       .
 
                 ENDP
@@ -625,28 +627,7 @@ WaitForInterrupt
         WFI
         BX     LR
 
-;******************************************************************************
-;
-; The function expected of the C library startup code for defining the stack
-; and heap memory locations.  For the C library version of the startup code,
-; provide this function so that the C library initialization code can find out
-; the location of the stack and heap.
-;
-;******************************************************************************
-    IF :DEF: __MICROLIB
-        EXPORT  __initial_sp
-        EXPORT  __heap_base
-        EXPORT  __heap_limit
-    ELSE
-        IMPORT  __use_two_region_memory
-        EXPORT  __user_initial_stackheap
-__user_initial_stackheap
-        LDR     R0, =Heap_Mem
-        LDR     R1, =(Stack_Mem + Stack_Size)
-        LDR     R2, =(Heap_Mem + Heap_Size)
-        LDR     R3, =Stack_Mem
-        BX      LR
-    ENDIF
+
 
 ;******************************************************************************
 ;

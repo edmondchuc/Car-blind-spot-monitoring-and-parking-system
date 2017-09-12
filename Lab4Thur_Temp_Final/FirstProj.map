@@ -1,0 +1,272 @@
+Component: ARM Compiler 5.06 update 4 (build 422) Tool: armlink [4d35d2]
+
+==============================================================================
+
+Section Cross References
+
+    startup.o(RESET) refers to startup.o(STACK) for __initial_sp
+    startup.o(RESET) refers to startup.o(.text) for Reset_Handler
+    startup.o(RESET) refers to mycode.o(MYCODE) for Rise_ISR
+    startup.o(.text) refers to main.o(.text) for Start
+    main.o(DATA) refers (Special) to libfunctions.o(LIBsCODE) for OUT2DEC
+    main.o(.text) refers (Special) to libfunctions.o(LIBsCODE) for OUT2DEC
+    main.o(.text) refers to mycode.o(MYCODE) for SetupGPIO
+    mycode.o(MYCODE) refers (Special) to libfunctions.o(LIBsCODE) for DelayUs
+
+
+==============================================================================
+
+Removing Unused input sections from the image.
+
+    Removing startup.o(HEAP), (0 bytes).
+    Removing main.o(DATA), (8 bytes).
+
+2 unused section(s) (total 8 bytes) removed from the image.
+
+==============================================================================
+
+Image Symbol Table
+
+    Local Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    RESET                                    0x00000000   Section      620  startup.o(RESET)
+    LibFunctions.s                           0x00000000   Number         0  libfunctions.o ABSOLUTE
+    MyCode.s                                 0x00000000   Number         0  mycode.o ABSOLUTE
+    Registers.s                              0x00000000   Number         0  registers.o ABSOLUTE
+    Startup.s                                0x00000000   Number         0  startup.o ABSOLUTE
+    main.s                                   0x00000000   Number         0  main.o ABSOLUTE
+    .text                                    0x0000026c   Section       68  startup.o(.text)
+    $v0                                      0x0000026c   Number         0  startup.o(.text)
+    .text                                    0x000002b0   Section       56  main.o(.text)
+    $v0                                      0x000002b0   Number         0  main.o(.text)
+    LIBsCODE                                 0x000002e8   Section      856  libfunctions.o(LIBsCODE)
+    $v0                                      0x000002e8   Number         0  libfunctions.o(LIBsCODE)
+    MYCODE                                   0x00000640   Section      348  mycode.o(MYCODE)
+    $v0                                      0x00000640   Number         0  mycode.o(MYCODE)
+    STACK                                    0x20000000   Section     1024  startup.o(STACK)
+    __initial_sp                             0x20000400   Data           0  startup.o(STACK)
+
+    Global Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    BuildAttributes$$THM_ISAv4$E$P$D$K$B$S$7EM$VFPi3$EXTD16$VFPS$VFMA$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$EBA8$STANDARDLIB$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    __Vectors                                0x00000000   Data           0  startup.o(RESET)
+    Reset_Handler                            0x0000026d   Thumb Code     0  startup.o(.text)
+    __Vectors_End                            0x0000026c   Data           0  startup.o(RESET)
+    __Vectors_Size                           0x0000026c   Number         0  startup.o ABSOLUTE
+    NMI_Handler                              0x00000281   Thumb Code     2  startup.o(.text)
+    HardFault_Handler                        0x00000283   Thumb Code     2  startup.o(.text)
+    MemManage_Handler                        0x00000285   Thumb Code     2  startup.o(.text)
+    BusFault_Handler                         0x00000287   Thumb Code     2  startup.o(.text)
+    UsageFault_Handler                       0x00000289   Thumb Code     2  startup.o(.text)
+    SVC_Handler                              0x0000028b   Thumb Code     2  startup.o(.text)
+    DebugMon_Handler                         0x0000028d   Thumb Code     2  startup.o(.text)
+    PendSV_Handler                           0x0000028f   Thumb Code     2  startup.o(.text)
+    SysTick_Handler                          0x00000291   Thumb Code     2  startup.o(.text)
+    ADC0SS0_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    ADC0SS1_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    ADC0SS2_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    ADC0SS3_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    ADC1SS0_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    ADC1SS1_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    ADC1SS2_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    ADC1SS3_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    CAN0_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    CAN1_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    CAN2_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    COMP0_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    COMP1_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    COMP2_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    FLASH_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    FPU_Handler                              0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOA_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOB_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOC_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOD_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOE_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOF_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOG_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOH_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOJ_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOK_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOL_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOM_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    GPION_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOP0_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOP1_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOP2_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOP3_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOP4_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOP5_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOP6_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOP7_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOQ0_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOQ1_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOQ2_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOQ3_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOQ4_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOQ5_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOQ6_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOQ7_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOR_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    GPIOS_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    HIB_Handler                              0x00000293   Thumb Code     0  startup.o(.text)
+    I2C0_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    I2C1_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    I2C2_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    I2C3_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    I2C4_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    I2C5_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    PWM0_0_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    PWM0_1_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    PWM0_2_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    PWM0_3_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    PWM0_FAULT_Handler                       0x00000293   Thumb Code     0  startup.o(.text)
+    PWM1_0_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    PWM1_1_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    PWM1_2_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    PWM1_3_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    PWM1_FAULT_Handler                       0x00000293   Thumb Code     0  startup.o(.text)
+    QEI0_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    QEI1_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    QEI2_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    SSI0_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    SSI1_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    SSI2_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    SSI3_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    SYSCTL_Handler                           0x00000293   Thumb Code     0  startup.o(.text)
+    TIMER0A_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    TIMER0B_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    TIMER1A_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    TIMER1B_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    TIMER2A_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    TIMER2B_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    TIMER3A_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    TIMER3B_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    TIMER4A_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    TIMER4B_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    TIMER5A_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    TIMER5B_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    UART0_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    UART1_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    UART2_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    UART3_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    UART4_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    UART5_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    UART6_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    UART7_Handler                            0x00000293   Thumb Code     0  startup.o(.text)
+    UDMAERR_Handler                          0x00000293   Thumb Code     0  startup.o(.text)
+    UDMA_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    USB0_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    WDT0_Handler                             0x00000293   Thumb Code     0  startup.o(.text)
+    WTIMER0A_Handler                         0x00000293   Thumb Code     0  startup.o(.text)
+    WTIMER0B_Handler                         0x00000293   Thumb Code     0  startup.o(.text)
+    WTIMER1A_Handler                         0x00000293   Thumb Code     0  startup.o(.text)
+    WTIMER1B_Handler                         0x00000293   Thumb Code     0  startup.o(.text)
+    WTIMER2A_Handler                         0x00000293   Thumb Code     0  startup.o(.text)
+    WTIMER2B_Handler                         0x00000293   Thumb Code     0  startup.o(.text)
+    WTIMER3A_Handler                         0x00000293   Thumb Code     0  startup.o(.text)
+    WTIMER3B_Handler                         0x00000293   Thumb Code     0  startup.o(.text)
+    WTIMER4A_Handler                         0x00000293   Thumb Code     0  startup.o(.text)
+    WTIMER4B_Handler                         0x00000293   Thumb Code     0  startup.o(.text)
+    WTIMER5A_Handler                         0x00000293   Thumb Code     0  startup.o(.text)
+    WTIMER5B_Handler                         0x00000293   Thumb Code     0  startup.o(.text)
+    DisableInterrupts                        0x00000295   Thumb Code     0  startup.o(.text)
+    EnableInterrupts                         0x00000299   Thumb Code     0  startup.o(.text)
+    StartCritical                            0x0000029d   Thumb Code     0  startup.o(.text)
+    EndCritical                              0x000002a5   Thumb Code     0  startup.o(.text)
+    WaitForInterrupt                         0x000002ab   Thumb Code     0  startup.o(.text)
+    Start                                    0x000002b1   Thumb Code     0  main.o(.text)
+    MyISRup                                  0x000002e9   Thumb Code     0  libfunctions.o(LIBsCODE)
+    MyISRdown                                0x00000303   Thumb Code     0  libfunctions.o(LIBsCODE)
+    OUT2DEC                                  0x0000031d   Thumb Code     0  libfunctions.o(LIBsCODE)
+    GpioSetupClk                             0x00000347   Thumb Code     0  libfunctions.o(LIBsCODE)
+    GpioSetupPort                            0x0000036d   Thumb Code     0  libfunctions.o(LIBsCODE)
+    Init_Timers                              0x000003b7   Thumb Code     0  libfunctions.o(LIBsCODE)
+    Test_UART                                0x000004bd   Thumb Code     0  libfunctions.o(LIBsCODE)
+    Initialize_UART0                         0x000004e3   Thumb Code     0  libfunctions.o(LIBsCODE)
+    Write_Char                               0x00000599   Thumb Code     0  libfunctions.o(LIBsCODE)
+    Read_Char                                0x000005b1   Thumb Code     0  libfunctions.o(LIBsCODE)
+    DelayMs                                  0x000005c9   Thumb Code     0  libfunctions.o(LIBsCODE)
+    DelayUs                                  0x000005eb   Thumb Code     0  libfunctions.o(LIBsCODE)
+    SetupGPIO                                0x00000641   Thumb Code     0  mycode.o(MYCODE)
+    Setup_TIMER                              0x000006a3   Thumb Code     0  mycode.o(MYCODE)
+    Rise_ISR                                 0x00000749   Thumb Code     0  mycode.o(MYCODE)
+    Fall_ISR                                 0x00000763   Thumb Code     0  mycode.o(MYCODE)
+
+
+
+==============================================================================
+
+Memory Map of the image
+
+  Image Entry point : 0x0000026d
+
+  Load Region LR_1 (Base: 0x00000000, Size: 0x0000079c, Max: 0xffffffff, ABSOLUTE)
+
+    Execution Region ER_RO (Base: 0x00000000, Size: 0x0000079c, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x00000000   0x0000026c   Code   RO            3    RESET               startup.o
+    0x0000026c   0x00000044   Code   RO            4  * .text               startup.o
+    0x000002b0   0x00000038   Code   RO           13    .text               main.o
+    0x000002e8   0x00000358   Code   RO           19    LIBsCODE            libfunctions.o
+    0x00000640   0x0000015c   Code   RO           16    MYCODE              mycode.o
+
+
+    Execution Region ER_RW (Base: 0x20000000, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+
+    **** No section assigned to this execution region ****
+
+
+    Execution Region ER_ZI (Base: 0x20000000, Size: 0x00000400, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000000   0x00000400   Zero   RW            1    STACK               startup.o
+
+
+==============================================================================
+
+Image component sizes
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+       856         54          0          0          0        520   libfunctions.o
+        56          6          0          0          0        220   main.o
+       348         32          0          0          0        312   mycode.o
+       688        622          0          0       1024        980   startup.o
+
+    ----------------------------------------------------------------------
+      1948        714          0          0       1024       2032   Object Totals
+         0          0          0          0          0          0   (incl. Generated)
+         0          0          0          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+         0          0          0          0          0          0   Library Totals
+         0          0          0          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+==============================================================================
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
+
+      1948        714          0          0       1024       2032   Grand Totals
+      1948        714          0          0       1024       2032   ELF Image Totals
+      1948        714          0          0          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                 1948 (   1.90kB)
+    Total RW  Size (RW Data + ZI Data)              1024 (   1.00kB)
+    Total ROM Size (Code + RO Data + RW Data)       1948 (   1.90kB)
+
+==============================================================================
+

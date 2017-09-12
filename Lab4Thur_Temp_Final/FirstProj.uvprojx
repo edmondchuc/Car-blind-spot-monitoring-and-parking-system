@@ -48,7 +48,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\</OutputDirectory>
-          <OutputName>Cproject</OutputName>
+          <OutputName>FirstProj</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -133,11 +133,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4096</DriverSelection>
+            <DriverSelection>4097</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3>"" ()</Flash3>
+          <Flash3></Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -385,19 +385,24 @@
               <FilePath>.\Startup.s</FilePath>
             </File>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main.c</FilePath>
+              <FileName>main.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\main.s</FilePath>
             </File>
             <File>
-              <FileName>general.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\general.c</FilePath>
+              <FileName>Registers.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\Registers.s</FilePath>
             </File>
             <File>
-              <FileName>asmbit.o</FileName>
+              <FileName>MyCode.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\MyCode.s</FilePath>
+            </File>
+            <File>
+              <FileName>libfunctions.o</FileName>
               <FileType>3</FileType>
-              <FilePath>.\asmbit.o</FilePath>
+              <FilePath>.\libfunctions.o</FilePath>
             </File>
           </Files>
         </Group>
