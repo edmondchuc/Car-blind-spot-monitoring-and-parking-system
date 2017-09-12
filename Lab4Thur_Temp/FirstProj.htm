@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\FirstProj.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\FirstProj.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue Sep 12 19:27:22 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue Sep 12 19:46:51 2017
 <BR><P>
 <H3>Maximum Stack Usage =          0 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -19,18 +19,18 @@ Functions with no stack information
  <LI><a href="#[7a]">EndCritical</a>
  <LI><a href="#[7b]">WaitForInterrupt</a>
  <LI><a href="#[7e]">Start</a>
- <LI><a href="#[85]">MyISRup</a>
- <LI><a href="#[87]">MyISRdown</a>
- <LI><a href="#[88]">OUT2DEC</a>
- <LI><a href="#[89]">GpioSetupClk</a>
- <LI><a href="#[8c]">GpioSetupPort</a>
- <LI><a href="#[8a]">Init_Timers</a>
+ <LI><a href="#[84]">MyISRup</a>
+ <LI><a href="#[86]">MyISRdown</a>
+ <LI><a href="#[87]">OUT2DEC</a>
+ <LI><a href="#[88]">GpioSetupClk</a>
+ <LI><a href="#[8b]">GpioSetupPort</a>
+ <LI><a href="#[89]">Init_Timers</a>
  <LI><a href="#[80]">Test_UART</a>
  <LI><a href="#[7f]">Initialize_UART0</a>
- <LI><a href="#[86]">Write_Char</a>
- <LI><a href="#[8b]">Read_Char</a>
- <LI><a href="#[84]">DelayMs</a>
- <LI><a href="#[83]">DelayUs</a>
+ <LI><a href="#[85]">Write_Char</a>
+ <LI><a href="#[8a]">Read_Char</a>
+ <LI><a href="#[83]">DelayMs</a>
+ <LI><a href="#[8c]">DelayUs</a>
  <LI><a href="#[81]">SetupGPIO</a>
  <LI><a href="#[82]">Setup_TIMER</a>
  <LI><a href="#[2d]">Rise_ISR</a>
@@ -586,92 +586,96 @@ Global Symbols
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Setup_TIMER
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupGPIO
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Initialize_UART0
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayUs
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayMs
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayMs
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Reset_Handler
 </UL>
 
-<P><STRONG><a name="[85]"></a>MyISRup</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write_Char
+<P><STRONG><a name="[84]"></a>MyISRup</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE))
+<BR><BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write_Char
+</UL>
+<BR>[Called By]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Rise_ISR
 </UL>
 
-<P><STRONG><a name="[87]"></a>MyISRdown</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write_Char
+<P><STRONG><a name="[86]"></a>MyISRdown</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE))
+<BR><BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write_Char
+</UL>
+<BR>[Called By]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fall_ISR
 </UL>
 
-<P><STRONG><a name="[88]"></a>OUT2DEC</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write_Char
+<P><STRONG><a name="[87]"></a>OUT2DEC</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write_Char
 </UL>
 
-<P><STRONG><a name="[89]"></a>GpioSetupClk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayMs
+<P><STRONG><a name="[88]"></a>GpioSetupClk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE))
+<BR><BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayMs
+</UL>
+<BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupGPIO
 </UL>
 
-<P><STRONG><a name="[8c]"></a>GpioSetupPort</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE), UNUSED)
+<P><STRONG><a name="[8b]"></a>GpioSetupPort</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE))
+<BR><BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupGPIO
+</UL>
 
-<P><STRONG><a name="[8a]"></a>Init_Timers</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayMs
+<P><STRONG><a name="[89]"></a>Init_Timers</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE))
+<BR><BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayMs
+</UL>
+<BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Setup_TIMER
 </UL>
 
 <P><STRONG><a name="[80]"></a>Test_UART</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE))
-<BR><BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write_Char
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_Char
+<BR><BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write_Char
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_Char
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Start
 </UL>
 
 <P><STRONG><a name="[7f]"></a>Initialize_UART0</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE))
-<BR><BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayMs
+<BR><BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayMs
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Start
 </UL>
 
-<P><STRONG><a name="[86]"></a>Write_Char</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE))
-<BR><BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MyISRup
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MyISRdown
+<P><STRONG><a name="[85]"></a>Write_Char</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE))
+<BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MyISRup
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MyISRdown
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_UART
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUT2DEC
-<LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Rise_ISR
-<LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fall_ISR
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUT2DEC
 </UL>
 
-<P><STRONG><a name="[8b]"></a>Read_Char</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE))
+<P><STRONG><a name="[8a]"></a>Read_Char</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE))
 <BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_UART
 </UL>
 
-<P><STRONG><a name="[84]"></a>DelayMs</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE))
-<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timers
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GpioSetupClk
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Setup_TIMER
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupGPIO
+<P><STRONG><a name="[83]"></a>DelayMs</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE))
+<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timers
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GpioSetupClk
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Initialize_UART0
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Start
 </UL>
 
-<P><STRONG><a name="[83]"></a>DelayUs</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE))
-<BR><BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Start
-</UL>
+<P><STRONG><a name="[8c]"></a>DelayUs</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libfunctions.o(LIBsCODE), UNUSED)
 
 <P><STRONG><a name="[81]"></a>SetupGPIO</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, mycode.o(MYCODE))
-<BR><BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayMs
+<BR><BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GpioSetupPort
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GpioSetupClk
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Start
 </UL>
 
 <P><STRONG><a name="[82]"></a>Setup_TIMER</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, mycode.o(MYCODE))
-<BR><BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayMs
+<BR><BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timers
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Start
 </UL>
 
 <P><STRONG><a name="[2d]"></a>Rise_ISR</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, mycode.o(MYCODE))
-<BR><BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write_Char
+<BR><BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MyISRup
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
 <P><STRONG><a name="[2e]"></a>Fall_ISR</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, mycode.o(MYCODE))
-<BR><BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write_Char
+<BR><BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MyISRdown
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL><P>

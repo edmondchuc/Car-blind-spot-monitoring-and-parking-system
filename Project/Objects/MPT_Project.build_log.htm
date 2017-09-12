@@ -21,36 +21,31 @@ Target DLL:      lmidk-agdi.dll V???
 Dialog DLL:      TCM.DLL V1.27.0.0
  
 <h2>Project:</h2>
-C:\Users\Edmond-Windows-Mac\Documents\mpt-repo\Lab4Thur_Temp_Final\FirstProj.uvprojx
+C:\Users\Edmond-Windows-Mac\Documents\mpt-repo\Project\MPT_Project.uvprojx
 Project File Date:  09/12/2017
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Target 1'
-assembling main.s...
-assembling Startup.s...
-assembling Registers.s...
 assembling MyCode.s...
+compiling utilities.c...
+compiling main.c...
+assembling Registers.s...
+assembling Startup.s...
+compiling setup.c...
 linking...
-Program Size: Code=1948 RO-data=0 RW-data=0 ZI-data=1024  
-".\FirstProj.axf" - 0 Error(s), 0 Warning(s).
-
-<h2>Software Packages used:</h2>
-
-Package Vendor: ARM
-                http://www.keil.com/pack/ARM.CMSIS.5.1.0.pack
-                ARM::CMSIS:CORE:5.0.2
-                CMSIS (Cortex Microcontroller Software Interface Standard)
-   * Component: CORE Version: 5.0.2
+.\Objects\MPT_Project.axf: Error: L6218E: Undefined symbol TimeA (referred from mycode.o).
+.\Objects\MPT_Project.axf: Error: L6218E: Undefined symbol TimeB (referred from mycode.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 2 error messages.
+".\Objects\MPT_Project.axf" - 2 Error(s), 0 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   .\RTE\_Target_1
-  C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include
   C:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123
 
 <h2>Collection of Component Files used:</h2>
-
-   * Component: ARM::CMSIS:CORE:5.0.2
+Target not created.
 Build Time Elapsed:  00:00:02
 </pre>
 </body>
