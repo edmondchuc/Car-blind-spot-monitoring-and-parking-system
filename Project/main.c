@@ -23,18 +23,19 @@ extern void SetupGPIO(void);
 
 int main(void)
 {
-	Initialize_UART0();
-	Test_UART();
+	Initialize_UART0();	// TODO: replace
+	Test_UART();	// TODO: replace
 	
-	SetupGPIO();
-	//setup_GPIO();
-	Setup_TIMER();
+	
+	setup_GPIO();
+	
+	//Setup_TIMER();	// TODO: replace
+	setup_timer();
 	
 
 	
 	while(1)	// prevent from ending program.
 	{
-		// TODO: not working, help.
 		GPIO_PORT_B_DATA ^= 0x10;
 		util_DelayMs(500);
 	}

@@ -6,3 +6,5 @@
 
 // Setup GPIO on port B, pins 2, 3, 4
 void setup_GPIO(void);
+
+void setup_timer(void);
