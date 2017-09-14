@@ -19,13 +19,15 @@
 #define SYSCTL_RCGCTIMER (*((volatile unsigned long *) 0x400FE604))
 #define SYSCTL_PRTIMER (* ((volatile unsigned long *) 0x400FEA04))
 	
-// Timer0 0x40036000
-#define TIMER_0_CTL (* ((volatile unsigned long *) 0x4003000C))
-#define TIMER_0_CFG (* ((volatile unsigned long *) 0x40030000))
-#define TIMER_0_TAMR (* ((volatile unsigned long *) 0x40030004))
-#define TIMER_0_TAILR (* ((volatile unsigned long *) 0x40030028))
-#define TIMER_0_IMR (* ((volatile unsigned long *) 0x40030018))
-#define TIMER_0_ICR (* ((volatile unsigned long *) 0x40030024))
+// Timer3 0x40033000
+#define TIMER_0_CTL (* ((volatile unsigned long *) 0x4003300C))
+#define TIMER_0_CFG (* ((volatile unsigned long *) 0x40033000))
+#define TIMER_0_TAMR (* ((volatile unsigned long *) 0x40033004))
+#define TIMER_0_TBMR (* ((volatile unsigned long *) 0x40033008))
+#define TIMER_0_TAILR (* ((volatile unsigned long *) 0x40033028))
+#define TIMER_0_TBILR (* ((volatile unsigned long *) 0x4003302C))
+#define TIMER_0_IMR (* ((volatile unsigned long *) 0x40033018))
+#define TIMER_0_ICR (* ((volatile unsigned long *) 0x40033024))
 
 // NVIC
-#define NVIC_EN0 (* ((volatile unsigned long *) 0xE000E100))
+#define NVIC_EN0 (* ((volatile unsigned long *) 0xE000E104))

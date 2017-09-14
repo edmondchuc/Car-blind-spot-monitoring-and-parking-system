@@ -187,19 +187,18 @@ ARM Macro Assembler    Page 3
                                                             ence 3
   113 00000088 00000000        DCD              WDT0_Handler ;  18: Watchdog ti
                                                             mer            
-  114 0000008C 00000000        DCD              Rise_ISR    ;TIMER0A_Handler   
-                                                                    ;  19: Time
-                                                            r 0 subtimer A
+  114 0000008C 00000000        DCD              TIMER0A_Handler ;  19: Timer 0 
+                                                            subtimer A
   115 00000090 00000000        DCD              TIMER0B_Handler ;  20: Timer 0 
                                                             subtimer B
   116 00000094 00000000        DCD              TIMER1A_Handler ;  21: Timer 1 
+                                                            subtimer A
 
 
 
 ARM Macro Assembler    Page 4 
 
 
-                                                            subtimer A
   117 00000098 00000000        DCD              TIMER1B_Handler ;  22: Timer 1 
                                                             subtimer B
   118 0000009C 00000000        DCD              TIMER2A_Handler ;  23: Timer 2 
@@ -258,13 +257,13 @@ ARM Macro Assembler    Page 4
   146 0000010C 00000000        DCD              ADC1SS3_Handler ;  51: ADC1 Seq
                                                             uence 3
   147 00000110 00000000        DCD              0           ;  52: Reserved
+  148 00000114 00000000        DCD              0           ;  53: Reserved
 
 
 
 ARM Macro Assembler    Page 5 
 
 
-  148 00000114 00000000        DCD              0           ;  53: Reserved
   149 00000118 00000000        DCD              GPIOJ_Handler 
                                                             ;  54: GPIO Port J
   150 0000011C 00000000        DCD              GPIOK_Handler 
@@ -323,13 +322,13 @@ ARM Macro Assembler    Page 5
                                                             subtimer B
   189 000001B8 00000000        DCD              WTIMER0A_Handler ;  94: Wide Ti
                                                             mer 0 subtimer A
+  190 000001BC 00000000        DCD              WTIMER0B_Handler ;  95: Wide Ti
 
 
 
 ARM Macro Assembler    Page 6 
 
 
-  190 000001BC 00000000        DCD              WTIMER0B_Handler ;  95: Wide Ti
                                                             mer 0 subtimer B
   191 000001C0 00000000        DCD              WTIMER1A_Handler ;  96: Wide Ti
                                                             mer 1 subtimer A
@@ -388,13 +387,13 @@ ARM Macro Assembler    Page 6
                                                             
   218 0000022C 00000000        DCD              GPIOP7_Handler 
                                                             ; 123: GPIO Port P7
+                                                            
 
 
 
 ARM Macro Assembler    Page 7 
 
 
-                                                            
   219 00000230 00000000        DCD              GPIOQ0_Handler ; 124: GPIO Port
                                                              Q (Summary or Q0)
   220 00000234 00000000        DCD              GPIOQ1_Handler 
@@ -453,13 +452,13 @@ ARM Macro Assembler    Page 7
                        ***********************
   248 00000000         ;
   249 00000000         ; Enable the floating-point unit.  This must be done her
+                       e to handle the
 
 
 
 ARM Macro Assembler    Page 8 
 
 
-                       e to handle the
   250 00000000         ; case where main() uses floating-point and the function
                         prologue saves
   251 00000000         ; floating-point registers (which will fault if floating
@@ -518,13 +517,13 @@ ARM Macro Assembler    Page 8
   292 00000014 E7FE            B                .
   293 00000016                 ENDP
   294 00000016         
+  295 00000016         ;*******************************************************
 
 
 
 ARM Macro Assembler    Page 9 
 
 
-  295 00000016         ;*******************************************************
                        ***********************
   296 00000016         ;
   297 00000016         ; This is the code that gets called when the processor r
@@ -583,13 +582,13 @@ ARM Macro Assembler    Page 9
   337 00000024                 EXPORT           SysTick_Handler           [WEAK
 ]
   338 00000024 E7FE            B                .
+  339 00000026                 ENDP
 
 
 
 ARM Macro Assembler    Page 10 
 
 
-  339 00000026                 ENDP
   341 00000026         IntDefaultHandler
                                PROC
   342 00000026         
@@ -648,13 +647,13 @@ K]
 ]
   378 00000026                 EXPORT           TIMER3A_Handler           [WEAK
 ]
+  379 00000026                 EXPORT           TIMER3B_Handler           [WEAK
 
 
 
 ARM Macro Assembler    Page 11 
 
 
-  379 00000026                 EXPORT           TIMER3B_Handler           [WEAK
 ]
   380 00000026                 EXPORT           I2C1_Handler              [WEAK
 ]
@@ -713,13 +712,13 @@ ARM Macro Assembler    Page 11
   410 00000026                 EXPORT           WTIMER0A_Handler       [WEAK]
   411 00000026                 EXPORT           WTIMER0B_Handler       [WEAK]
   412 00000026                 EXPORT           WTIMER1A_Handler       [WEAK]
+  413 00000026                 EXPORT           WTIMER1B_Handler       [WEAK]
 
 
 
 ARM Macro Assembler    Page 12 
 
 
-  413 00000026                 EXPORT           WTIMER1B_Handler       [WEAK]
   414 00000026                 EXPORT           WTIMER2A_Handler       [WEAK]
   415 00000026                 EXPORT           WTIMER2B_Handler       [WEAK]
   416 00000026                 EXPORT           WTIMER3A_Handler       [WEAK]
@@ -778,13 +777,13 @@ AK]
   465 00000026         QEI0_Handler
   466 00000026         ADC0SS0_Handler
   467 00000026         ADC0SS1_Handler
+  468 00000026         ADC0SS2_Handler
 
 
 
 ARM Macro Assembler    Page 13 
 
 
-  468 00000026         ADC0SS2_Handler
   469 00000026         ADC0SS3_Handler
   470 00000026         WDT0_Handler
   471 00000026         TIMER0A_Handler
@@ -843,13 +842,13 @@ ARM Macro Assembler    Page 13
   524 00000026         WTIMER2B_Handler
   525 00000026         WTIMER3A_Handler
   526 00000026         WTIMER3B_Handler
+  527 00000026         WTIMER4A_Handler
 
 
 
 ARM Macro Assembler    Page 14 
 
 
-  527 00000026         WTIMER4A_Handler
   528 00000026         WTIMER4B_Handler
   529 00000026         WTIMER5A_Handler
   530 00000026         WTIMER5B_Handler
@@ -908,13 +907,13 @@ ARM Macro Assembler    Page 14
   578 00000028         ;*******************************************************
                        ***********************
   579 00000028         ;
+  580 00000028         ; Useful functions.
 
 
 
 ARM Macro Assembler    Page 15 
 
 
-  580 00000028         ; Useful functions.
   581 00000028         ;
   582 00000028         ;*******************************************************
                        ***********************
@@ -973,13 +972,13 @@ ARM Macro Assembler    Page 15
   631 00000042         ;
   632 00000042         ; The function expected of the C library startup code fo
                        r defining the stack
+  633 00000042         ; and heap memory locations.  For the C library version 
 
 
 
 ARM Macro Assembler    Page 16 
 
 
-  633 00000042         ; and heap memory locations.  For the C library version 
                        of the startup code,
   634 00000042         ; provide this function so that the C library initializa
                        tion code can find out
@@ -1995,8 +1994,9 @@ Symbol: TIMER0A_Handler
    Definitions
       At line 471 in file Startup.s
    Uses
+      At line 114 in file Startup.s
       At line 362 in file Startup.s
-Comment: TIMER0A_Handler used once
+
 TIMER0B_Handler 00000026
 
 Symbol: TIMER0B_Handler
@@ -2037,13 +2037,13 @@ TIMER2B_Handler 00000026
 
 Symbol: TIMER2B_Handler
    Definitions
-      At line 476 in file Startup.s
 
 
 
 ARM Macro Assembler    Page 15 Alphabetic symbol ordering
 Relocatable symbols
 
+      At line 476 in file Startup.s
    Uses
       At line 119 in file Startup.s
       At line 367 in file Startup.s
@@ -2102,13 +2102,13 @@ Symbol: TIMER5B_Handler
 
 UART0_Handler 00000026
 
-Symbol: UART0_Handler
 
 
 
 ARM Macro Assembler    Page 16 Alphabetic symbol ordering
 Relocatable symbols
 
+Symbol: UART0_Handler
    Definitions
       At line 457 in file Startup.s
    Uses
@@ -2167,13 +2167,13 @@ Symbol: UART6_Handler
       At line 511 in file Startup.s
    Uses
       At line 157 in file Startup.s
-      At line 402 in file Startup.s
 
 
 
 ARM Macro Assembler    Page 17 Alphabetic symbol ordering
 Relocatable symbols
 
+      At line 402 in file Startup.s
 
 UART7_Handler 00000026
 
@@ -2232,13 +2232,13 @@ Symbol: WDT0_Handler
 WTIMER0A_Handler 00000026
 
 Symbol: WTIMER0A_Handler
-   Definitions
 
 
 
 ARM Macro Assembler    Page 18 Alphabetic symbol ordering
 Relocatable symbols
 
+   Definitions
       At line 519 in file Startup.s
    Uses
       At line 189 in file Startup.s
@@ -2300,9 +2300,9 @@ Symbol: WTIMER3A_Handler
 
 
 
-
 ARM Macro Assembler    Page 19 Alphabetic symbol ordering
 Relocatable symbols
+
 
 WTIMER3B_Handler 00000026
 
@@ -2362,13 +2362,13 @@ __user_initial_stackheap 00000042
 Symbol: __user_initial_stackheap
    Definitions
       At line 645 in file Startup.s
-   Uses
 
 
 
 ARM Macro Assembler    Page 20 Alphabetic symbol ordering
 Relocatable symbols
 
+   Uses
       At line 644 in file Startup.s
 Comment: __user_initial_stackheap used once
 126 symbols
@@ -2425,9 +2425,8 @@ Symbol: Rise_ISR
    Definitions
       At line 74 in file Startup.s
    Uses
-      At line 114 in file Startup.s
       At line 130 in file Startup.s
-
+Comment: Rise_ISR used once
 __main 00000000
 
 Symbol: __main
