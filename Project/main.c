@@ -21,22 +21,51 @@ extern void Test_UART(void);
 extern void Setup_TIMER(void);
 extern void SetupGPIO(void);
 
+
+
+
 int main(void)
 {
-	Initialize_UART0();	// TODO: replace
-	Test_UART();	// TODO: replace
+	//Initialize_UART0();	// TODO: replace
+	//Test_UART();	// TODO: replace
 	
-	
+	setup_UART();
 	setup_GPIO();
 	
 	//Setup_TIMER();	// TODO: replace
 	setup_timer();
 	
+	
+	
+	//__asm("MOV R3, #'M'");
+	
 
+	util_write_char('b');
+//	util_DelayMs(1000);
+//	util_write_char(31);
+//	util_DelayMs(1000);
+//	util_write_char(32);
+//	util_DelayMs(1000);
+//	util_write_char(33);
+//	util_write_char(34);
+//	util_write_char(35);
+//	util_write_char(36);
+//	util_write_char(37);
+//	util_write_char(38);
+//	util_write_char(39);
+//	util_write_char(40);
+//	util_write_char(41);
+//	util_write_char(42);
+//	util_write_char(43);
+//	util_DelayMs(3000);
 	
 	while(1)	// prevent from ending program.
 	{
-		GPIO_PORT_B_DATA ^= 0x10;
-		util_DelayMs(500);
+		//GPIO_PORT_B_DATA ^= 0x10;
+		//util_DelayMs(1000);
+		
+		//util_write_char(60);
+		//Write_Char();
 	}
 }
+

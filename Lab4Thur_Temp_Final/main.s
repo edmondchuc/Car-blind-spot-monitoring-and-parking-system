@@ -28,6 +28,9 @@ Start
       
 	   BL  SetupGPIO    
        BL  Setup_TIMER  
+	   
+	   MOV R3, #'M'
+	   BL Write_Char
 
 Spin
        MOV  R4, #11

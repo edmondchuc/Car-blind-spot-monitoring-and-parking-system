@@ -14,26 +14,33 @@ extern void EnableInterrupts(void);
 //																--- GPIO SETUP ---
 // --------------------------------------------------------------------------
 // Setup GPIO on port B, pins 2, 3, 4, 6, 7
+// Setup GPIO on port A, pins 0, 1 for UART0
 void setup_GPIO(void)
 {
 	// enable/wait for clock to stabilise
-	SYSCTL_RCGCGPIO |= 0x2;	// enable clock for port B
-	while((SYSCTL_PRGPIO & 0x2) != 0x2) {}; // wait for clock to stabilise
+	SYSCTL_RCGCGPIO |= 0x3;	// enable clock for port B, A
+	while((SYSCTL_PRGPIO & 0x3) != 0x3) {}; // wait for clock to stabilise
 	util_DelayMs(50);	// delay for 50 milliseconds in case clock is not stable
 		
 	// set data direction
 	GPIO_PORT_B_DIR &= ~0xCC;	// input on pins 2, 3, 6, 7
 	GPIO_PORT_B_DIR |= 0x10;	// output on pin 4
+	GPIO_PORT_A_DIR	|= 0x1; 	// input on pin 1
+	GPIO_PORT_A_DIR &= ~0x2;	// output on pins 2
 	
 	// set regular port/alternate function
 	GPIO_PORT_B_AFSEL |= 0xCC;	// alternate function on pins 2, 3, 6, 7
+	GPIO_PORT_A_AFSEL	|= 0x3;		// alternate function on pins 0, 1
 	
 	// configure port control/column number for alternate function
 	GPIO_PORT_B_PCTL &= ~0xFF0FFF00;	// clear bits in pins 2, 3, 4, 6, 7
-	GPIO_PORT_B_PCTL |= 0x77007700;		// set port control column 7 for timers. 
+	GPIO_PORT_B_PCTL |= 0x77007700;		// set port control column 7 for timers.
+	GPIO_PORT_A_PCTL &= ~0xFF; 	// clear bits in pins 0, 1
+	GPIO_PORT_A_PCTL |= 0x11;		// set port control column 1 for UART0
 		
 	// enable digital I/O
-	GPIO_PORT_B_DEN |= 0xDC;	// set digital I/O on pins 2, ,3, 4, 6, 7
+	GPIO_PORT_B_DEN |= 0xDC;	// set digital I/O on pins 2, 3, 4, 6, 7
+	GPIO_PORT_A_DEN |= 0x3;		// set digital I/O on pins 0, 1
 }
 
 // --------------------------------------------------------------------------
@@ -110,7 +117,35 @@ void setup_timer(void)
 	EnableInterrupts();
 }
 
+// setup UART0 on port A, pin 0 (Rx), 1 (Tx)
 void setup_UART(void)
 {
+	// enable UAR01 clock
+	SYSCTL_RCGUART |= 0x1;
 	
+	// wait for UART0 clock to stabilise
+	while((SYSCTL_PRUART  & 0x1) != 0x1) {};
+	util_DelayMs(50);
+		
+	// disable UART to change settings
+	UART_0_CTL &= ~0x1;
+	
+	// Baud rate = 57600
+	// 8 bit data
+	// even parity
+	// 1 stop
+	// no flow control
+	// set UART integer baud rate divisor
+	UART_0_IBRD |= 34;
+	
+	// set UART fractional baud rate divisor
+	UART_0_FBRD |= 46;
+		
+	// set line control register settings
+	UART_0_LCRH |= 0x60; // set word length to 8 bits
+	UART_0_LCRH &= ~0x8; // select 1 stop bit
+	UART_0_LCRH |= 0x6; // select even parity and enable EPS
+		
+	// enable UART0
+	UART_0_CTL |= 0x321; // enable UART, set prescaler as 8 and enable Rx, Tx
 }

@@ -298,38 +298,41 @@ ARM Macro Assembler    Page 5
    29 00000008 F7FF FFFE       BL               SetupGPIO
    30 0000000C F7FF FFFE       BL               Setup_TIMER
    31 00000010         
-   32 00000010         Spin
-   33 00000010 F04F 040B       MOV              R4, #11
-   34 00000014         
-   35 00000014         ;LDR R0, =GPIO_B_DATA
-   36 00000014         ;LDR R1, [R0]
-   37 00000014         ;EOR R1, #0x10
-   38 00000014         ;STR R1, [R0]
-   39 00000014         ;BL DelayUs    
-   40 00000014         
-   41 00000014 4807            LDR              R0, =GPIO_B_DATA
-   42 00000016 6801            LDR              R1, [R0]
-   43 00000018 F041 0110       ORR              R1, #0x10
-   44 0000001C 6001            STR              R1, [R0]
-   45 0000001E F7FF FFFE       BL               DelayUs
-   46 00000022         
-   47 00000022 F021 0110       BIC              R1, #0x10
-   48 00000026 6001            STR              R1, [R0]
-   49 00000028 F44F 747A       MOV              R4, #1000
-   50 0000002C F7FF FFFE       BL               DelayMs
-   51 00000030         
-   52 00000030 E7EE            B                Spin
-   53 00000032         
-   54 00000032         
-   55 00000032         
-   56 00000032 00 00           ALIGN
+   32 00000010 F04F 034D       MOV              R3, #'M'
+   33 00000014 F7FF FFFE       BL               Write_Char
+   34 00000018         
+   35 00000018         Spin
+   36 00000018 F04F 040B       MOV              R4, #11
+   37 0000001C         
+   38 0000001C         ;LDR R0, =GPIO_B_DATA
+   39 0000001C         ;LDR R1, [R0]
+   40 0000001C         ;EOR R1, #0x10
+   41 0000001C         ;STR R1, [R0]
+   42 0000001C         ;BL DelayUs    
+   43 0000001C         
+   44 0000001C 4807            LDR              R0, =GPIO_B_DATA
+   45 0000001E 6801            LDR              R1, [R0]
+   46 00000020 F041 0110       ORR              R1, #0x10
+   47 00000024 6001            STR              R1, [R0]
+   48 00000026 F7FF FFFE       BL               DelayUs
+   49 0000002A         
+   50 0000002A F021 0110       BIC              R1, #0x10
+   51 0000002E 6001            STR              R1, [R0]
+   52 00000030 F44F 747A       MOV              R4, #1000
+   53 00000034 F7FF FFFE       BL               DelayMs
+   54 00000038         
+   55 00000038 E7EE            B                Spin
+   56 0000003A         
 
 
 
 ARM Macro Assembler    Page 6 
 
 
-   57 00000034                 END
+   57 0000003A         
+   58 0000003A         
+   59 0000003A 00 00           ALIGN
+   60 0000003C                 END
               400053FC 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
 erwork --depend=.\main.d -o.\main.o -I.\RTE\_Target_1 -IC:\Keil_v5\ARM\PACK\ARM
@@ -382,13 +385,13 @@ Symbol: .text
    Uses
       None
 Comment: .text unused
-Spin 00000010
+Spin 00000018
 
 Symbol: Spin
    Definitions
-      At line 32 in file main.s
+      At line 35 in file main.s
    Uses
-      At line 52 in file main.s
+      At line 55 in file main.s
 Comment: Spin used once
 Start 00000000
 
@@ -443,7 +446,7 @@ Symbol: GPIO_B_DATA
    Definitions
       At line 31 in file Registers.s
    Uses
-      At line 41 in file main.s
+      At line 44 in file main.s
 Comment: GPIO_B_DATA used once
 GPIO_CR 00000524
 
@@ -1056,7 +1059,7 @@ Symbol: DelayMs
    Definitions
       At line 19 in file main.s
    Uses
-      At line 50 in file main.s
+      At line 53 in file main.s
 Comment: DelayMs used once
 DelayUs 00000000
 
@@ -1064,7 +1067,7 @@ Symbol: DelayUs
    Definitions
       At line 20 in file main.s
    Uses
-      At line 45 in file main.s
+      At line 48 in file main.s
 Comment: DelayUs used once
 Initialize_UART0 00000000
 
@@ -1126,7 +1129,7 @@ Symbol: Write_Char
    Definitions
       At line 18 in file main.s
    Uses
-      None
-Comment: Write_Char unused
+      At line 33 in file main.s
+Comment: Write_Char used once
 9 symbols
 425 symbols in table

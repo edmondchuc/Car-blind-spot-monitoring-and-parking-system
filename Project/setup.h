@@ -8,3 +8,5 @@
 void setup_GPIO(void);
 
 void setup_timer(void);
+
+void setup_UART(void);

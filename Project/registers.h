@@ -12,8 +12,14 @@
 #define GPIO_PORT_B_AFSEL (*((volatile unsigned long *) 0x40005420))
 #define GPIO_PORT_B_PCTL (*((volatile unsigned long *) 0x4000552C))
 #define GPIO_PORT_B_DEN (*((volatile unsigned long *) 0x4000551C))
-
 #define GPIO_PORT_B_DATA (*((volatile unsigned long *) 0x400053FC))
+	
+// GPIO port A 0x40004000
+#define GPIO_PORT_A_DIR (*((volatile unsigned long *) 0x40004400))
+#define GPIO_PORT_A_AFSEL (*((volatile unsigned long *) 0x40004420))
+#define GPIO_PORT_A_PCTL (*((volatile unsigned long *) 0x4000452C))
+#define GPIO_PORT_A_DEN (*((volatile unsigned long *) 0x4000451C))
+#define GPIO_PORT_A_DATA (*((volatile unsigned long *) 0x400043FC))
 
 // Timer clock
 #define SYSCTL_RCGCTIMER (*((volatile unsigned long *) 0x400FE604))
@@ -45,3 +51,15 @@
 
 // NVIC
 #define NVIC_EN0 (* ((volatile unsigned long *) 0xE000E100))
+
+// UART SYSCTL
+#define SYSCTL_RCGUART (* ((volatile unsigned long *) 0x400FE618))
+#define SYSCTL_PRUART (* ((volatile unsigned long *) 0x400FEA18))
+	
+// UART0
+#define UART_0_CTL (*((volatile unsigned long*) 0x4000C030))
+#define UART_0_IBRD (*((volatile unsigned long*) 0x4000C024))
+#define UART_0_FBRD (*((volatile unsigned long*) 0x4000C028))
+#define UART_0_LCRH (*((volatile unsigned long*) 0x4000C02C))
+#define UART_0_FR (*((volatile unsigned long *)0x4000C018)) 
+#define UART_0_DR (*((volatile unsigned long *) 0x4000C000))
