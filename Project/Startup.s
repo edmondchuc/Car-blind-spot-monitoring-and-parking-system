@@ -71,8 +71,8 @@ __heap_limit
         EXPORT  __Vectors
         EXPORT  __Vectors_End
         EXPORT  __Vectors_Size
-		IMPORT Rise_ISR
-		IMPORT Fall_ISR
+		IMPORT TM3_Rise
+		IMPORT TM3_Fall
 		
 __Vectors
         DCD     __initial_sp              ; Top of Stack
@@ -127,8 +127,8 @@ __Vectors
                 DCD     GPIOH_Handler             ;  32: GPIO Port H
                 DCD     UART2_Handler             ;  33: UART2 Rx and Tx
                 DCD     SSI1_Handler              ;  34: SSI1 Rx and Tx
-                DCD     Rise_ISR ;TIMER3A_Handler           ;  35: Timer 3 subtimer A
-                DCD     Fall_ISR ;TIMER3B_Handler           ;  36: Timer 3 subtimer B
+                DCD     TM3_Rise ;TIMER3A_Handler           ;  35: Timer 3 subtimer A
+                DCD     TM3_Fall ;TIMER3B_Handler           ;  36: Timer 3 subtimer B
                 DCD     I2C1_Handler              ;  37: I2C1 Master and Slave
                 DCD     QEI1_Handler              ;  38: Quadrature Encoder 1
                 DCD     CAN0_Handler              ;  39: CAN0

@@ -7,8 +7,8 @@
 #include "registers.h"
 #include "utilities.h"
 
-double TimeA;	// save the time for TimerA?
-double TimeB;	// save the time for TimerB?
+int TimeA;	// save the time for TimerA?
+int TimeB;	// save the time for TimerB?
 
 // Belinda's functions
 extern void Initialize_UART0(void);
@@ -38,34 +38,70 @@ int main(void)
 	
 	
 	//__asm("MOV R3, #'M'");
-	
-
-	util_write_char('b');
+	//int x = 15;
+	//util_write_char_dec((x));
+	util_write_char('G');
 //	util_DelayMs(1000);
-//	util_write_char(31);
+	util_write_char('O');
+	util_write_char(' ');
+////	util_DelayMs(1000);
+//	util_write_char(' ');
+//	util_write_char('t');
 //	util_DelayMs(1000);
-//	util_write_char(32);
+//	util_write_char('e');
 //	util_DelayMs(1000);
-//	util_write_char(33);
-//	util_write_char(34);
-//	util_write_char(35);
-//	util_write_char(36);
-//	util_write_char(37);
-//	util_write_char(38);
-//	util_write_char(39);
-//	util_write_char(40);
-//	util_write_char(41);
-//	util_write_char(42);
-//	util_write_char(43);
-//	util_DelayMs(3000);
+//	util_write_char('s');
+//	util_write_char('t');
 	
 	while(1)	// prevent from ending program.
 	{
-		//GPIO_PORT_B_DATA ^= 0x10;
-		//util_DelayMs(1000);
+//		GPIO_PORT_B_DATA ^= 0x10;
+//		util_DelayMs(1000);
+		//util_write_char('F');
 		
-		//util_write_char(60);
-		//Write_Char();
+		GPIO_PORT_B_DATA |= 0x10;
+		util_DelayUs(11);
+		
+		GPIO_PORT_B_DATA&= ~0x10;
+		util_DelayMs(1000);
 	}
 }
+
+void TM3_Rise()
+{
+	TimeA = TIMER_3_TAV & 0xFFFF;
+	//util_write_char('-');
+	TIMER_3_ICR |= 0x4;	// event trigger clear
+}
+
+void TM3_Fall()
+{
+	TimeB = TIMER_3_TBV & 0xFFFF;
+	//util_write_char('.');
+	TIMER_3_ICR |= 0x400; // event trigger clear
+	
+	//print_time(TimeA, TimeB);
+	int diff = difference(TimeA, TimeB);
+	if(diff < 7100 && diff > 3900)
+	{
+		util_write_char('O');
+		util_write_char('b');
+		util_write_char('j');
+		util_write_char('e');
+		util_write_char('c');
+		util_write_char('t');
+		util_write_char(' ');
+		util_write_char('d');
+		util_write_char('e');
+		util_write_char('t');
+		util_write_char('e');
+		util_write_char('c');
+		util_write_char('t');
+		util_write_char('e');
+		util_write_char('d');
+		util_write_char('!');
+		util_write_char(' ');
+	}
+}
+
 

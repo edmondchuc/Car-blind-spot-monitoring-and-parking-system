@@ -113,8 +113,8 @@ ARM Macro Assembler    Page 2
    71 00000000                 EXPORT           __Vectors
    72 00000000                 EXPORT           __Vectors_End
    73 00000000                 EXPORT           __Vectors_Size
-   74 00000000                 IMPORT           Rise_ISR
-   75 00000000                 IMPORT           Fall_ISR
+   74 00000000                 IMPORT           TM3_Rise
+   75 00000000                 IMPORT           TM3_Fall
    76 00000000         
    77 00000000         __Vectors
    78 00000000 00000000        DCD              __initial_sp ; Top of Stack
@@ -226,10 +226,10 @@ ARM Macro Assembler    Page 4
                                                             nd Tx
   129 000000C8 00000000        DCD              SSI1_Handler ;  34: SSI1 Rx and
                                                              Tx
-  130 000000CC 00000000        DCD              Rise_ISR    ;TIMER3A_Handler   
+  130 000000CC 00000000        DCD              TM3_Rise    ;TIMER3A_Handler   
                                                                     ;  35: Time
                                                             r 3 subtimer A
-  131 000000D0 00000000        DCD              Fall_ISR    ;TIMER3B_Handler   
+  131 000000D0 00000000        DCD              TM3_Fall    ;TIMER3B_Handler   
                                                                     ;  36: Time
                                                             r 3 subtimer B
   132 000000D4 00000000        DCD              I2C1_Handler ;  37: I2C1 Master
@@ -2411,22 +2411,22 @@ Comment: __Vectors_Size used once
 ARM Macro Assembler    Page 1 Alphabetic symbol ordering
 External symbols
 
-Fall_ISR 00000000
+TM3_Fall 00000000
 
-Symbol: Fall_ISR
+Symbol: TM3_Fall
    Definitions
       At line 75 in file Startup.s
    Uses
       At line 131 in file Startup.s
-Comment: Fall_ISR used once
-Rise_ISR 00000000
+Comment: TM3_Fall used once
+TM3_Rise 00000000
 
-Symbol: Rise_ISR
+Symbol: TM3_Rise
    Definitions
       At line 74 in file Startup.s
    Uses
       At line 130 in file Startup.s
-Comment: Rise_ISR used once
+Comment: TM3_Rise used once
 __main 00000000
 
 Symbol: __main

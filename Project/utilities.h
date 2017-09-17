@@ -6,5 +6,14 @@
 // Blocks for numLoops in milliseconds.
 void util_DelayMs(unsigned int numLoops);
 
+void util_DelayUs(unsigned int numLoops);
+
 // Writes a char to terminal
 void util_write_char(unsigned char c);
+
+void util_write_char_dec(unsigned int number);
+
+void print_time(int A, int B);
+
+int difference(int a, int b);
+

@@ -34,6 +34,8 @@
 #define TIMER_3_TBILR (* ((volatile unsigned long *) 0x4003302C))
 #define TIMER_3_IMR (* ((volatile unsigned long *) 0x40033018))
 #define TIMER_3_ICR (* ((volatile unsigned long *) 0x40033024))
+#define TIMER_3_TAV (* ((volatile unsigned long *) 0x40033050))
+#define TIMER_3_TBV (* ((volatile unsigned long *) 0x40033054))
 
 // NVIC
 #define NVIC_EN1 (* ((volatile unsigned long *) 0xE000E104))
