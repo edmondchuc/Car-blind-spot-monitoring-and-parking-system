@@ -50,6 +50,8 @@
 #define TIMER_0_TBILR (* ((volatile unsigned long *) 0x4003002C))
 #define TIMER_0_IMR (* ((volatile unsigned long *) 0x40030018))
 #define TIMER_0_ICR (* ((volatile unsigned long *) 0x40030024))
+#define TIMER_0_TAV (* ((volatile unsigned long *) 0x40030050))
+#define TIMER_0_TBV (* ((volatile unsigned long *) 0x40030054))
 
 // NVIC
 #define NVIC_EN0 (* ((volatile unsigned long *) 0xE000E100))

@@ -71,6 +71,8 @@ __heap_limit
         EXPORT  __Vectors
         EXPORT  __Vectors_End
         EXPORT  __Vectors_Size
+		IMPORT TM0_Rise
+		IMPORT TM0_Fall
 		IMPORT TM3_Rise
 		IMPORT TM3_Fall
 		
@@ -111,8 +113,8 @@ __Vectors
         DCD     ADC0SS2_Handler           ;  16: ADC Sequence 2
         DCD     ADC0SS3_Handler           ;  17: ADC Sequence 3
         DCD     WDT0_Handler              ;  18: Watchdog timer            
-        DCD     TIMER0A_Handler           ;  19: Timer 0 subtimer A
-                DCD     TIMER0B_Handler           ;  20: Timer 0 subtimer B
+        DCD     TM0_Rise ;TIMER0A_Handler           ;  19: Timer 0 subtimer A
+                DCD     TM0_Fall ;TIMER0B_Handler           ;  20: Timer 0 subtimer B
                 DCD     TIMER1A_Handler           ;  21: Timer 1 subtimer A
                 DCD     TIMER1B_Handler           ;  22: Timer 1 subtimer B
                 DCD     TIMER2A_Handler           ;  23: Timer 2 subtimer A
