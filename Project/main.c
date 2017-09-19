@@ -13,8 +13,11 @@ int TimeB;
 
 int Time0A;
 int Time0B;
-int Time3A;	// save the time for TimerA?
-int Time3B;	// save the time for TimerB?
+int Time3A;	
+int Time3B;	
+
+int Time1A;
+int Time1B;
 
 // Belinda's functions
 extern void Initialize_UART0(void);
@@ -65,10 +68,10 @@ int main(void)
 //		util_DelayMs(1000);
 		//util_write_char('F');
 		
-		GPIO_PORT_B_DATA |= 0x10;
+		GPIO_PORT_A_DATA |= 0x10;
 		util_DelayUs(11);
 		
-		GPIO_PORT_B_DATA&= ~0x10;
+		GPIO_PORT_A_DATA &= ~0x10;
 		util_DelayMs(600);
 	}
 }
@@ -108,7 +111,7 @@ void TM3_Rise()
 void TM3_Fall()
 {
 	Time3B = TIMER_3_TBV & 0xFFFF;
-	//util_write_char('.');
+	util_write_char('.');
 	TIMER_3_ICR |= 0x400; // event trigger clear
 	
 	//print_time(TimeA, TimeB);
@@ -123,4 +126,31 @@ void TM3_Fall()
 	}
 }
 
+void TM1_Rise()
+{
+	Time1A = TIMER_1_TAV & 0xFFFF;
+	TIMER_1_ICR |= 0x4;
+}
+
+void TM1_Fall()
+{
+	Time1B = TIMER_1_TBV & 0xFFFF;
+	TIMER_1_ICR |= 0x400;
+	
+	int diff = difference(Time1A, Time1B);
+	if(diff < 9000 && diff > 3200)
+	{
+		util_write_char('o');
+		util_write_char('b');
+		util_write_char('!');
+		util_write_char(' ');
+	}
+	else
+	{
+		util_write_char('n');
+		util_write_char('o');
+		util_write_char('!');
+		util_write_char(' ');
+	}
+}
 

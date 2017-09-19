@@ -55,6 +55,18 @@
 
 // NVIC
 #define NVIC_EN0 (* ((volatile unsigned long *) 0xE000E100))
+	
+// Timer1 0x40031000
+#define TIMER_1_CTL (* ((volatile unsigned long *) 0x4003100C))
+#define TIMER_1_CFG (* ((volatile unsigned long *) 0x40031000))
+#define TIMER_1_TAMR (* ((volatile unsigned long *) 0x40031004))
+#define TIMER_1_TBMR (* ((volatile unsigned long *) 0x40031008))
+#define TIMER_1_TAILR (* ((volatile unsigned long *) 0x40031028))
+#define TIMER_1_TBILR (* ((volatile unsigned long *) 0x4003102C))
+#define TIMER_1_IMR (* ((volatile unsigned long *) 0x40031018))
+#define TIMER_1_ICR (* ((volatile unsigned long *) 0x40031024))
+#define TIMER_1_TAV (* ((volatile unsigned long *) 0x40031050))
+#define TIMER_1_TBV (* ((volatile unsigned long *) 0x40031054))
 
 // UART SYSCTL
 #define SYSCTL_RCGUART (* ((volatile unsigned long *) 0x400FE618))
