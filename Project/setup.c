@@ -17,6 +17,7 @@ extern void EnableInterrupts(void);
 // Setup GPIO on port A, pins 0, 1 for UART0
 // Setup GPIO on port A, pin 2 for LED3, pin 3 for LED0
 // Setup GPIO on port B, pins 4, 5
+// Setup GPIO on port B, pins 0 for PWM
 void setup_GPIO(void)
 {
 	// enable/wait for clock to stabilise
@@ -25,23 +26,24 @@ void setup_GPIO(void)
 	util_DelayMs(50);	// delay for 50 milliseconds in case clock is not stable
 		
 	// set data direction
-	GPIO_PORT_B_DIR &= ~0xFF;	// input on pins 0, 1, 2, 3, 4, 5, 6, 7
+	GPIO_PORT_B_DIR &= ~0xFC;	// input on pins 2, 3, 4, 5, 6, 7
 	GPIO_PORT_A_DIR	&= ~0x1; 	// input on pin 0
 	GPIO_PORT_A_DIR |= 0x2;	// output on pin 1
 	GPIO_PORT_A_DIR |= 0x4;		// output on pin 2 LED3
 	GPIO_PORT_A_DIR |= 0x8;		// output on pin 3 LED0
 	GPIO_PORT_A_DIR |= 0x10;		// output on pin 1
+	GPIO_PORT_B_DIR |= 0x1;	// output on pin 0 for PWM
 	
 	
 	// set regular port/alternate function
-	GPIO_PORT_B_AFSEL |= 0xFF;	// alternate function on pins 0, 1, 2, 3, 4, 5, 6, 7
+	GPIO_PORT_B_AFSEL |= 0xFD;	// alternate function on pins 0, 2, 3, 4, 5, 6, 7
 	GPIO_PORT_A_AFSEL	|= 0x3;		// alternate function on pins 0, 1
 	GPIO_PORT_A_AFSEL &= ~0xC;	// set as regular port for pins 2, 3
 	GPIO_PORT_A_AFSEL &= ~0x10;		// set as regulart port for pin 1
 	
 	// configure port control/column number for alternate function
-	GPIO_PORT_B_PCTL &= ~0xFFFFFFFF;	// clear bits in pins 0, 1, 2, 3, 4, 5, 6, 7
-	GPIO_PORT_B_PCTL |= 0x77777777;		// set port control column 7 for timers.
+	GPIO_PORT_B_PCTL &= ~0xFFFFFF0F;	// clear bits in pins 0, 2, 3, 4, 5, 6, 7
+	GPIO_PORT_B_PCTL |= 0x77777707;		// set port control column 7 for timers.
 	GPIO_PORT_A_PCTL &= ~0xFF; 	// clear bits in pins 0, 1
 	GPIO_PORT_A_PCTL |= 0x11;		// set port control column 1 for UART0
 	GPIO_PORT_A_PCTL &= ~0x4;		// set pin 2 as regular GPIO for LED3
@@ -49,7 +51,7 @@ void setup_GPIO(void)
 	GPIO_PORT_A_PCTL &= ~0xF0000;		// set pin 1 as regular GPIO
 		
 	// enable digital I/O
-	GPIO_PORT_B_DEN |= 0xFF;	// set digital I/O on pins 2, 3, 4, 5, 6, 7
+	GPIO_PORT_B_DEN |= 0xFD;	// set digital I/O on pins 0, 2, 3, 4, 5, 6, 7
 	GPIO_PORT_A_DEN |= 0x3;		// set digital I/O on pins 0, 1
 	GPIO_PORT_A_DEN |= 0xC;		// set digital I/O on pin 2, 3
 	GPIO_PORT_A_DEN	|= 0x10;		// set digital I/O on pin 1
@@ -75,6 +77,7 @@ void setup_timer(void)
 	TIMER_3_CTL &= ~0x101;	// disable Timer A, B
 	TIMER_1_CTL &= ~0x101;
 	TIMER_2_CTL &= ~0x101;
+	TIMER_2_CTL &= ~0x40;	// default PWM
 	
 	// configures global operation of timer
 	TIMER_0_CFG |= 0x4;
@@ -97,10 +100,9 @@ void setup_timer(void)
 	TIMER_1_TAMR |= 0x7;
 	TIMER_1_TBMR &= ~0x8;
 	TIMER_1_TBMR |= 0x7;
-	TIMER_2_TAMR &= ~0x8;
-	TIMER_2_TAMR |= 0x7;
-	TIMER_2_TBMR &= ~0x8;
-	TIMER_2_TBMR |= 0x7;
+	TIMER_2_TAMR |= 0x8;	// enable PWM mode
+	TIMER_2_TAMR &= ~0x265;	// edge-count mode for PWM
+	TIMER_2_TAMR |= 0x2;	// periodic timer for PWM
 	
 	// set TAEVENT definition of active edges
 	TIMER_0_CTL &= ~0xC0C;
@@ -120,15 +122,15 @@ void setup_timer(void)
 	TIMER_3_TBILR |= 0xFFFF; // " "
 	TIMER_1_TAILR |= 0xFFFF;
 	TIMER_1_TBILR |= 0xFFFF;
-	TIMER_2_TAILR |= 0xFFFF;
-	TIMER_2_TBILR |= 0xFFFF;
+	TIMER_2_TAILR |= 0xFFFE;	// reload for PWM
+	
+	TIMER_2_TAMATCH |= 0x5000; // match value for PWM
 	
 	// set interrupt settings for Timer A, B
 	// note: priority left as default
 	TIMER_0_IMR |= 0x404;
 	TIMER_3_IMR |= 0x404;	// enable interrupts for capture mode event
 	TIMER_1_IMR |= 0x404;
-	TIMER_2_IMR |= 0x404;
 	
 	// enable correct interrupt in NVIC_ENn register
 	// IRQ no. = 19

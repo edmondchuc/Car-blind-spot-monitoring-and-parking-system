@@ -47,7 +47,7 @@ int main(void)
 	setup_timer();
 	
 	
-	
+	TIMER_2_CTL |= 0x1;	// enable PWM
 	//__asm("MOV R3, #'M'");
 	//int x = 15;
 	//util_write_char_dec((x));
@@ -153,27 +153,3 @@ void TM1_Fall()
 	}
 }
 
-void TM2_Rise()
-{
-	Time2A = TIMER_2_TAV & 0xFFFF;
-	//util_write_char('-');
-	TIMER_2_ICR |= 0x4;	// event trigger clear
-}
-
-void TM2_Fall()
-{
-	Time2B = TIMER_2_TBV & 0xFFFF;
-	//util_write_char('.');
-	TIMER_2_ICR |= 0x400; // event trigger clear
-	
-	//print_time(TimeA, TimeB);
-	int diff = difference(Time2A, Time2B);
-	if(diff < 9000 && diff > 3200)
-	{
-		GPIO_PORT_A_DATA |= 0x4;	// turn on LED3 on pin 2
-	}
-	else
-	{
-		GPIO_PORT_A_DATA &= ~0x4;	// turn off LED3 on pin 2
-	}
-}

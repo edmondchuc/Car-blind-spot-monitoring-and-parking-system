@@ -91,6 +91,7 @@
 #define TIMER_2_ICR (* ((volatile unsigned long *) 0x40032024))
 #define TIMER_2_TAV (* ((volatile unsigned long *) 0x40032050))
 #define TIMER_2_TBV (* ((volatile unsigned long *) 0x40032054))
+#define TIMER_2_TAMATCH (* ((volatile unsigned long *) 0x40032030))
 
 // UART SYSCTL
 #define SYSCTL_RCGUART (* ((volatile unsigned long *) 0x400FE618))
