@@ -75,8 +75,6 @@ __heap_limit
 		IMPORT TM0_Fall
 		IMPORT TM3_Rise
 		IMPORT TM3_Fall
-		IMPORT TM1_Rise
-		IMPORT TM1_Fall
 		
 __Vectors
         DCD     __initial_sp              ; Top of Stack
@@ -117,8 +115,8 @@ __Vectors
         DCD     WDT0_Handler              ;  18: Watchdog timer            
         DCD     TM0_Rise ;TIMER0A_Handler           ;  19: Timer 0 subtimer A
                 DCD     TM0_Fall ;TIMER0B_Handler           ;  20: Timer 0 subtimer B
-                DCD     TM1_Rise ;TIMER1A_Handler           ;  21: Timer 1 subtimer A
-                DCD     TM1_Fall ;TIMER1B_Handler           ;  22: Timer 1 subtimer B
+                DCD     TIMER1A_Handler           ;  21: Timer 1 subtimer A
+                DCD     TIMER1B_Handler           ;  22: Timer 1 subtimer B
                 DCD     TIMER2A_Handler           ;  23: Timer 2 subtimer A
                 DCD     TIMER2B_Handler           ;  24: Timer 2 subtimer B
                 DCD     COMP0_Handler             ;  25: Analog Comparator 0
