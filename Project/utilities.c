@@ -90,3 +90,15 @@ int difference(int a, int b)
         return max - b + a;
     }
 }
+
+void enable_buzzer()
+{
+	TIMER_2_CTL |= 0x1;
+	GPIO_PORT_B_DEN |= 0x1;
+}
+
+void disable_buzzer()
+{
+	TIMER_2_CTL &= ~0x1;
+	GPIO_PORT_B_DEN &= ~0x1;
+}

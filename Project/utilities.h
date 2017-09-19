@@ -17,3 +17,6 @@ void print_time(int A, int B);
 
 int difference(int a, int b);
 
+void enable_buzzer(void);
+
+void disable_buzzer(void);

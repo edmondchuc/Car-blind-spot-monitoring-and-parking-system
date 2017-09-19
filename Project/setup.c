@@ -76,8 +76,8 @@ void setup_timer(void)
 	TIMER_0_CTL &= ~0x101;
 	TIMER_3_CTL &= ~0x101;	// disable Timer A, B
 	TIMER_1_CTL &= ~0x101;
-	TIMER_2_CTL &= ~0x101;
-	TIMER_2_CTL &= ~0x40;	// default PWM
+	TIMER_2_CTL &= ~0x1;
+	TIMER_2_CTL &= ~0x4C;	// default PWM
 	
 	// configures global operation of timer
 	TIMER_0_CFG |= 0x4;
@@ -122,9 +122,9 @@ void setup_timer(void)
 	TIMER_3_TBILR |= 0xFFFF; // " "
 	TIMER_1_TAILR |= 0xFFFF;
 	TIMER_1_TBILR |= 0xFFFF;
-	TIMER_2_TAILR |= 0xFFFE;	// reload for PWM
+	TIMER_2_TAILR |= 0xFA00;	// reload for PWM
 	
-	TIMER_2_TAMATCH |= 0x5000; // match value for PWM
+	TIMER_2_TAMATCH |= 0xF9F6; // match value for PWM
 	
 	// set interrupt settings for Timer A, B
 	// note: priority left as default
@@ -155,7 +155,9 @@ void setup_timer(void)
 	TIMER_0_CTL |= 0x101;
 	TIMER_3_CTL |= 0x101;	// enable and start counting on Timer 0A, B
 	TIMER_1_CTL |= 0x101;
-	TIMER_2_CTL |= 0x101;
+	//TIMER_2_CTL |= 0x101;
+	TIMER_2_CTL |= 0x1;
+	
 	
 	// enable interrupts after setup
 	EnableInterrupts();

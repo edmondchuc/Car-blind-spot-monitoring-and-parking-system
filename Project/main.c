@@ -46,35 +46,20 @@ int main(void)
 	//Setup_TIMER();	// TODO: replace
 	setup_timer();
 	
+	disable_buzzer();
 	
-	TIMER_2_CTL |= 0x1;	// enable PWM
-	//__asm("MOV R3, #'M'");
-	//int x = 15;
-	//util_write_char_dec((x));
-	//util_write_char('G');
-//	util_DelayMs(1000);
-	//util_write_char('O');
-	//util_write_char(' ');
-////	util_DelayMs(1000);
-//	util_write_char(' ');
-//	util_write_char('t');
-//	util_DelayMs(1000);
-//	util_write_char('e');
-//	util_DelayMs(1000);
-//	util_write_char('s');
-//	util_write_char('t');
 	
 	while(1)	// prevent from ending program.
 	{
-//		GPIO_PORT_B_DATA ^= 0x10;
-//		util_DelayMs(1000);
-		//util_write_char('F');
-		
+		enable_buzzer();
+		GPIO_PORT_A_DATA |= 0x4;	// TEST
 		GPIO_PORT_A_DATA |= 0x10;
 		util_DelayUs(11);
 		
-		GPIO_PORT_A_DATA&= ~0x10;
-		util_DelayMs(600);
+		GPIO_PORT_A_DATA &= ~0x10;
+		util_DelayMs(1000);
+		GPIO_PORT_A_DATA &= ~0x4; // TEST
+		disable_buzzer();
 	}
 }
 
@@ -103,6 +88,17 @@ void TM0_Fall()
 	}
 }
 
+void Buzz(int numOfBeeps, int delay)
+{
+	int i;
+	for(i=0; i<= numOfBeeps; i++)
+	{
+			enable_buzzer();
+			util_DelayMs(delay);
+			disable_buzzer();
+	}
+}
+
 void TM3_Rise()
 {
 	Time3A = TIMER_3_TAV & 0xFFFF;
@@ -121,10 +117,17 @@ void TM3_Fall()
 	if(diff < 9000 && diff > 3200)
 	{
 		GPIO_PORT_A_DATA |= 0x4;	// turn on LED3 on pin 2
+		
+		//Buzz(2, 300);
+		
+		enable_buzzer();
+		
 	}
 	else
 	{
 		GPIO_PORT_A_DATA &= ~0x4;	// turn off LED3 on pin 2
+		
+		
 	}
 }
 
