@@ -33,6 +33,7 @@ void setup_GPIO(void)
 	
 	// set regular port/alternate function
 	GPIO_PORT_B_AFSEL |= 0xCC;	// alternate function on pins 2, 3, 6, 7
+	GPIO_PORT_B_AFSEL &= ~0x10;	// set as regular port for pin 4
 	GPIO_PORT_A_AFSEL	|= 0x3;		// alternate function on pins 0, 1
 	GPIO_PORT_A_AFSEL &= ~0xC;	// set as regular port for pins 2, 3
 	

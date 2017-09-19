@@ -276,13 +276,13 @@ Image Symbol Table
     i.difference                             0x000004f0   Section        0  utilities.o(i.difference)
     i.main                                   0x00000504   Section        0  main.o(i.main)
     i.setup_GPIO                             0x0000055c   Section        0  setup.o(i.setup_GPIO)
-    i.setup_UART                             0x00000670   Section        0  setup.o(i.setup_UART)
-    i.setup_timer                            0x000006ec   Section        0  setup.o(i.setup_timer)
-    i.util_DelayMs                           0x000008ac   Section        0  utilities.o(i.util_DelayMs)
-    i.util_DelayUs                           0x000008c8   Section        0  utilities.o(i.util_DelayUs)
-    i.util_write_char                        0x000008e4   Section        0  utilities.o(i.util_write_char)
-    x$fpl$fpinit                             0x00000904   Section       10  fpinit.o(x$fpl$fpinit)
-    $v0                                      0x00000904   Number         0  fpinit.o(x$fpl$fpinit)
+    i.setup_UART                             0x0000067c   Section        0  setup.o(i.setup_UART)
+    i.setup_timer                            0x000006f8   Section        0  setup.o(i.setup_timer)
+    i.util_DelayMs                           0x000008b8   Section        0  utilities.o(i.util_DelayMs)
+    i.util_DelayUs                           0x000008d4   Section        0  utilities.o(i.util_DelayUs)
+    i.util_write_char                        0x000008f0   Section        0  utilities.o(i.util_write_char)
+    x$fpl$fpinit                             0x00000910   Section       10  fpinit.o(x$fpl$fpinit)
+    $v0                                      0x00000910   Number         0  fpinit.o(x$fpl$fpinit)
     .data                                    0x20000000   Section       24  main.o(.data)
     .bss                                     0x20000018   Section       96  libspace.o(.bss)
     HEAP                                     0x20000078   Section        0  startup.o(HEAP)
@@ -518,17 +518,17 @@ Image Symbol Table
     TM3_Rise                                 0x000004d1   Thumb Code    24  main.o(i.TM3_Rise)
     difference                               0x000004f1   Thumb Code    20  utilities.o(i.difference)
     main                                     0x00000505   Thumb Code    78  main.o(i.main)
-    setup_GPIO                               0x0000055d   Thumb Code   248  setup.o(i.setup_GPIO)
-    setup_UART                               0x00000671   Thumb Code   112  setup.o(i.setup_UART)
-    setup_timer                              0x000006ed   Thumb Code   426  setup.o(i.setup_timer)
-    util_DelayMs                             0x000008ad   Thumb Code    28  utilities.o(i.util_DelayMs)
-    util_DelayUs                             0x000008c9   Thumb Code    26  utilities.o(i.util_DelayUs)
-    util_write_char                          0x000008e5   Thumb Code    26  utilities.o(i.util_write_char)
-    _fp_init                                 0x00000905   Thumb Code    10  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x0000090d   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x0000090d   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    Region$$Table$$Base                      0x00000910   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00000930   Number         0  anon$$obj.o(Region$$Table)
+    setup_GPIO                               0x0000055d   Thumb Code   258  setup.o(i.setup_GPIO)
+    setup_UART                               0x0000067d   Thumb Code   112  setup.o(i.setup_UART)
+    setup_timer                              0x000006f9   Thumb Code   426  setup.o(i.setup_timer)
+    util_DelayMs                             0x000008b9   Thumb Code    28  utilities.o(i.util_DelayMs)
+    util_DelayUs                             0x000008d5   Thumb Code    26  utilities.o(i.util_DelayUs)
+    util_write_char                          0x000008f1   Thumb Code    26  utilities.o(i.util_write_char)
+    _fp_init                                 0x00000911   Thumb Code    10  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x00000919   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x00000919   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    Region$$Table$$Base                      0x0000091c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x0000093c   Number         0  anon$$obj.o(Region$$Table)
     TimeA                                    0x20000000   Data           4  main.o(.data)
     TimeB                                    0x20000004   Data           4  main.o(.data)
     Time0A                                   0x20000008   Data           4  main.o(.data)
@@ -546,9 +546,9 @@ Memory Map of the image
 
   Image Entry point : 0x0000030d
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00000948, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00000954, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Base: 0x00000000, Size: 0x00000930, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Base: 0x00000000, Size: 0x0000093c, Max: 0xffffffff, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -616,16 +616,16 @@ Memory Map of the image
     0x000004d0   0x00000020   Code   RO            4    i.TM3_Rise          main.o
     0x000004f0   0x00000014   Code   RO           85    i.difference        utilities.o
     0x00000504   0x00000058   Code   RO            5    i.main              main.o
-    0x0000055c   0x00000114   Code   RO           61    i.setup_GPIO        setup.o
-    0x00000670   0x0000007c   Code   RO           62    i.setup_UART        setup.o
-    0x000006ec   0x000001c0   Code   RO           63    i.setup_timer       setup.o
-    0x000008ac   0x0000001c   Code   RO           87    i.util_DelayMs      utilities.o
-    0x000008c8   0x0000001a   Code   RO           88    i.util_DelayUs      utilities.o
-    0x000008e2   0x00000002   PAD
-    0x000008e4   0x00000020   Code   RO           89    i.util_write_char   utilities.o
-    0x00000904   0x0000000a   Code   RO          218    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x0000090e   0x00000002   PAD
-    0x00000910   0x00000020   Data   RO          286    Region$$Table       anon$$obj.o
+    0x0000055c   0x00000120   Code   RO           61    i.setup_GPIO        setup.o
+    0x0000067c   0x0000007c   Code   RO           62    i.setup_UART        setup.o
+    0x000006f8   0x000001c0   Code   RO           63    i.setup_timer       setup.o
+    0x000008b8   0x0000001c   Code   RO           87    i.util_DelayMs      utilities.o
+    0x000008d4   0x0000001a   Code   RO           88    i.util_DelayUs      utilities.o
+    0x000008ee   0x00000002   PAD
+    0x000008f0   0x00000020   Code   RO           89    i.util_write_char   utilities.o
+    0x00000910   0x0000000a   Code   RO          218    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x0000091a   0x00000002   PAD
+    0x0000091c   0x00000020   Data   RO          286    Region$$Table       anon$$obj.o
 
 
     Execution Region ER_RW (Base: 0x20000000, Size: 0x00000018, Max: 0xffffffff, ABSOLUTE)
@@ -653,12 +653,12 @@ Image component sizes
 
        360         58          0         24          0       4173   main.o
          0          0          0          0          0         32   mycode.o
-       848         62          0          0          0       1632   setup.o
+       860         64          0          0          0       1636   setup.o
        708        632          0          0       1024        984   startup.o
        106          6          0          0          0       2201   utilities.o
 
     ----------------------------------------------------------------------
-      2024        758         32         24       1024       9022   Object Totals
+      2036        760         32         24       1024       9026   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          2          0          0          0          0          0   (incl. Padding)
 
@@ -709,15 +709,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      2320        774         32         24       1120       8766   Grand Totals
-      2320        774         32         24       1120       8766   ELF Image Totals
-      2320        774         32         24          0          0   ROM Totals
+      2332        776         32         24       1120       8770   Grand Totals
+      2332        776         32         24       1120       8770   ELF Image Totals
+      2332        776         32         24          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 2352 (   2.30kB)
+    Total RO  Size (Code + RO Data)                 2364 (   2.31kB)
     Total RW  Size (RW Data + ZI Data)              1144 (   1.12kB)
-    Total ROM Size (Code + RO Data + RW Data)       2376 (   2.32kB)
+    Total ROM Size (Code + RO Data + RW Data)       2388 (   2.33kB)
 
 ==============================================================================
 
