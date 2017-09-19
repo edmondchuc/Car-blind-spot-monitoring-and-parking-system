@@ -15,7 +15,7 @@ extern void EnableInterrupts(void);
 // --------------------------------------------------------------------------
 // Setup GPIO on port B, pins 2, 3, 4, 6, 7
 // Setup GPIO on port A, pins 0, 1 for UART0
-// Setup GPIO on port A, pin 2 for LED3
+// Setup GPIO on port A, pin 2 for LED3, pin 3 for LED0
 void setup_GPIO(void)
 {
 	// enable/wait for clock to stabilise
@@ -29,22 +29,25 @@ void setup_GPIO(void)
 	GPIO_PORT_A_DIR	|= 0x1; 	// input on pin 0
 	GPIO_PORT_A_DIR &= ~0x2;	// output on pin 1
 	GPIO_PORT_A_DIR |= 0x4;		// output on pin 2 LED3
+	GPIO_PORT_A_DIR |= 0x8;		// output on pin 3 LED0
 	
 	// set regular port/alternate function
 	GPIO_PORT_B_AFSEL |= 0xCC;	// alternate function on pins 2, 3, 6, 7
 	GPIO_PORT_A_AFSEL	|= 0x3;		// alternate function on pins 0, 1
+	GPIO_PORT_A_AFSEL &= ~0xC;	// set as regular port for pins 2, 3
 	
 	// configure port control/column number for alternate function
 	GPIO_PORT_B_PCTL &= ~0xFF0FFF00;	// clear bits in pins 2, 3, 4, 6, 7
 	GPIO_PORT_B_PCTL |= 0x77007700;		// set port control column 7 for timers.
 	GPIO_PORT_A_PCTL &= ~0xFF; 	// clear bits in pins 0, 1
 	GPIO_PORT_A_PCTL |= 0x11;		// set port control column 1 for UART0
-	GPIO_PORT_A_PCTL &= ~0x4;		// set pin 2 as regular GPIO for LED
+	GPIO_PORT_A_PCTL &= ~0x4;		// set pin 2 as regular GPIO for LED3
+	GPIO_PORT_A_PCTL &= ~0x8;		// set pin 3 as regular GPIO for LED0
 		
 	// enable digital I/O
 	GPIO_PORT_B_DEN |= 0xDC;	// set digital I/O on pins 2, 3, 4, 6, 7
 	GPIO_PORT_A_DEN |= 0x3;		// set digital I/O on pins 0, 1
-	GPIO_PORT_A_DEN |= 0x4;		// set digital I/O on pin 2
+	GPIO_PORT_A_DEN |= 0xC;		// set digital I/O on pin 2, 3
 }
 
 // --------------------------------------------------------------------------

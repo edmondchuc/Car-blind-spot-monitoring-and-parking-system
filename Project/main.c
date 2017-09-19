@@ -90,29 +90,11 @@ void TM0_Fall()
 	int diff = difference(Time0A, Time0B);
 	if(diff < 9000 && diff > 3200)
 	{
-		//GPIO_PORT_A_DATA |= 0x4;	// turn on LED on pin 2
-		
-		util_write_char('O');
-		util_write_char('b');
-		util_write_char('j');
-		util_write_char('e');
-		util_write_char('c');
-		util_write_char('t');
-		util_write_char(' ');
-		util_write_char('d');
-		util_write_char('e');
-		util_write_char('t');
-		util_write_char('e');
-		util_write_char('c');
-		util_write_char('t');
-		util_write_char('e');
-		util_write_char('d');
-		util_write_char('!');
-		util_write_char(' ');
+		GPIO_PORT_A_DATA |= 0x8;	// turn on LED0 on pin 3
 	}
 	else
 	{
-		//GPIO_PORT_A_DATA &= ~0x4;	// turn off LED on pin 2
+		GPIO_PORT_A_DATA &= ~0x8;	// turn off LED0 on pin 3
 	}
 }
 
@@ -133,29 +115,11 @@ void TM3_Fall()
 	int diff = difference(Time3A, Time3B);
 	if(diff < 9000 && diff > 3200)
 	{
-		GPIO_PORT_A_DATA |= 0x4;	// turn on LED on pin 2
-		
-//		util_write_char('O');
-//		util_write_char('b');
-//		util_write_char('j');
-//		util_write_char('e');
-//		util_write_char('c');
-//		util_write_char('t');
-//		util_write_char(' ');
-//		util_write_char('d');
-//		util_write_char('e');
-//		util_write_char('t');
-//		util_write_char('e');
-//		util_write_char('c');
-//		util_write_char('t');
-//		util_write_char('e');
-//		util_write_char('d');
-//		util_write_char('!');
-//		util_write_char(' ');
+		GPIO_PORT_A_DATA |= 0x4;	// turn on LED3 on pin 2
 	}
 	else
 	{
-		GPIO_PORT_A_DATA &= ~0x4;	// turn off LED on pin 2
+		GPIO_PORT_A_DATA &= ~0x4;	// turn off LED3 on pin 2
 	}
 }
 
