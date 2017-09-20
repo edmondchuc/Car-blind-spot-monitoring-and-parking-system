@@ -385,19 +385,9 @@
               <FilePath>.\main.c</FilePath>
             </File>
             <File>
-              <FileName>MyCode.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\MyCode.s</FilePath>
-            </File>
-            <File>
               <FileName>Registers.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\Registers.s</FilePath>
-            </File>
-            <File>
-              <FileName>libfunctions.o</FileName>
-              <FileType>3</FileType>
-              <FilePath>.\libfunctions.o</FilePath>
             </File>
             <File>
               <FileName>Startup.s</FileName>

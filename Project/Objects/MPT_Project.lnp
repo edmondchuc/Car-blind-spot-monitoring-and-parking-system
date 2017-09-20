@@ -1,8 +1,6 @@
 --cpu=Cortex-M4.fp
 ".\objects\main.o"
-".\objects\mycode.o"
 ".\objects\registers.o"
-".\libfunctions.o"
 ".\objects\startup.o"
 ".\objects\setup.o"
 ".\objects\utilities.o"

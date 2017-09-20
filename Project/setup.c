@@ -170,6 +170,9 @@ void setup_timer(void)
 	EnableInterrupts();
 }
 
+// --------------------------------------------------------------------------
+//															--- Interrupt SETUP ---
+// --------------------------------------------------------------------------
 // setup GPIO inputs on port A, pins 5, 6
 void setup_interrupt(void)
 {
@@ -187,6 +190,9 @@ void setup_interrupt(void)
 	EnableInterrupts();
 }
 
+// --------------------------------------------------------------------------
+//															--- UART SETUP ---
+// --------------------------------------------------------------------------
 // setup UART0 on port A, pin 0 (Rx), 1 (Tx)
 void setup_UART(void)
 {

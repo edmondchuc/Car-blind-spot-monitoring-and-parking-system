@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\MPT_Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\MPT_Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Wed Sep 20 20:42:09 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Wed Sep 20 22:52:30 2017
 <BR><P>
 <H3>Maximum Stack Usage =         24 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -748,12 +748,12 @@ Global Symbols
 
 <P><STRONG><a name="[cb]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[9a]"></a>Buzz</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, main.o(i.Buzz))
+<P><STRONG><a name="[9a]"></a>Buzz</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, utilities.o(i.Buzz))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Buzz
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;util_DelayMs
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enable_buzzer
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enable_buzzer
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disable_buzzer
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;util_DelayMs
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;button_ISR
 <LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM1_Fall
@@ -858,8 +858,8 @@ Global Symbols
 <P><STRONG><a name="[9c]"></a>util_DelayMs</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, utilities.o(i.util_DelayMs))
 <BR><BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_timer
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_GPIO
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzz
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[a2]"></a>util_DelayUs</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, utilities.o(i.util_DelayUs))
