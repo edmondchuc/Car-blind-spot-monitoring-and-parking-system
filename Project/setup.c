@@ -18,6 +18,7 @@ extern void EnableInterrupts(void);
 // Setup GPIO on port A, pin 2 for LED3, pin 3 for LED0
 // Setup GPIO on port B, pins 4, 5
 // Setup GPIO on port B, pins 0 for PWM
+// Setup GPIO on port A, pins 5, 6 for clicker input
 void setup_GPIO(void)
 {
 	// enable/wait for clock to stabilise
@@ -31,9 +32,9 @@ void setup_GPIO(void)
 	GPIO_PORT_A_DIR |= 0x2;	// output on pin 1
 	GPIO_PORT_A_DIR |= 0x4;		// output on pin 2 LED3
 	GPIO_PORT_A_DIR |= 0x8;		// output on pin 3 LED0
-	GPIO_PORT_A_DIR |= 0x10;		// output on pin 1
+	GPIO_PORT_A_DIR |= 0x10;		// output on pin 4
 	GPIO_PORT_B_DIR |= 0x1;	// output on pin 0 for PWM
-	
+	GPIO_PORT_A_DIR &= ~0x30;	// input on pin 5, 6
 	
 	// set regular port/alternate function
 	GPIO_PORT_B_AFSEL |= 0xFD;	// alternate function on pins 0, 2, 3, 4, 5, 6, 7
@@ -50,6 +51,9 @@ void setup_GPIO(void)
 	GPIO_PORT_A_PCTL &= ~0x8;		// set pin 3 as regular GPIO for LED0
 	GPIO_PORT_A_PCTL &= ~0xF0000;		// set pin 1 as regular GPIO
 		
+	// enable DR8R for PWM
+	GPIO_PORT_B_DR8R |= 0x1;	// enable output drive for 8mA
+
 	// enable digital I/O
 	GPIO_PORT_B_DEN |= 0xFD;	// set digital I/O on pins 0, 2, 3, 4, 5, 6, 7
 	GPIO_PORT_A_DEN |= 0x3;		// set digital I/O on pins 0, 1
@@ -77,7 +81,7 @@ void setup_timer(void)
 	TIMER_3_CTL &= ~0x101;	// disable Timer A, B
 	TIMER_1_CTL &= ~0x101;
 	TIMER_2_CTL &= ~0x1;
-	TIMER_2_CTL &= ~0x4C;	// default PWM
+	//TIMER_2_CTL &= ~0x4C;	// default PWM
 	
 	// configures global operation of timer
 	TIMER_0_CFG |= 0x4;
@@ -100,9 +104,9 @@ void setup_timer(void)
 	TIMER_1_TAMR |= 0x7;
 	TIMER_1_TBMR &= ~0x8;
 	TIMER_1_TBMR |= 0x7;
-	TIMER_2_TAMR |= 0x8;	// enable PWM mode
-	TIMER_2_TAMR &= ~0x265;	// edge-count mode for PWM
-	TIMER_2_TAMR |= 0x2;	// periodic timer for PWM
+	TIMER_2_TAMR &= ~0x7;	// edge-count mode for PWM
+	TIMER_2_TAMR |= 0xA;	// enable PWM mode
+	//TIMER_2_TAMR |= 0x2;	// periodic timer for PWM
 	
 	// set TAEVENT definition of active edges
 	TIMER_0_CTL &= ~0xC0C;
@@ -112,8 +116,8 @@ void setup_timer(void)
 	TIMER_3_CTL |= 0x400;		// set negative edge for Timer B (fall)
 	TIMER_1_CTL &= ~0xC0C;
 	TIMER_1_CTL |= 0x400;
-	TIMER_2_CTL &= ~0xC0C;
-	TIMER_2_CTL |= 0x400;
+	//TIMER_2_CTL &= ~0xC0C;
+	//TIMER_2_CTL |= 0x400;
 		
 	// set starting preload values for Timer A, B
 	TIMER_0_TAILR |= 0xFFFF;
@@ -122,9 +126,9 @@ void setup_timer(void)
 	TIMER_3_TBILR |= 0xFFFF; // " "
 	TIMER_1_TAILR |= 0xFFFF;
 	TIMER_1_TBILR |= 0xFFFF;
-	TIMER_2_TAILR |= 0xFA00;	// reload for PWM
+	TIMER_2_TAILR = 0x800;	// reload for PWM
 	
-	TIMER_2_TAMATCH |= 0xF9F6; // match value for PWM
+	TIMER_2_TAMATCH = 0x800; // match value for PWM
 	
 	// set interrupt settings for Timer A, B
 	// note: priority left as default
@@ -156,8 +160,8 @@ void setup_timer(void)
 	TIMER_3_CTL |= 0x101;	// enable and start counting on Timer 0A, B
 	TIMER_1_CTL |= 0x101;
 	//TIMER_2_CTL |= 0x101;
+	//TIMER_2_CTL |= 0x1;
 	TIMER_2_CTL |= 0x1;
-	
 	
 	// enable interrupts after setup
 	EnableInterrupts();

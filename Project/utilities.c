@@ -93,12 +93,16 @@ int difference(int a, int b)
 
 void enable_buzzer()
 {
-	TIMER_2_CTL |= 0x1;
-	GPIO_PORT_B_DEN |= 0x1;
+	TIMER_2_TAILR = 0x6000;
+	TIMER_2_TAMATCH = 0x600;
+	//TIMER_2_CTL |= 0x1;
+	//GPIO_PORT_B_DEN |= 0x1;
 }
 
 void disable_buzzer()
 {
-	TIMER_2_CTL &= ~0x1;
-	GPIO_PORT_B_DEN &= ~0x1;
+	TIMER_2_TAILR = 0x6000;
+	TIMER_2_TAMATCH = 0x6000 ;
+	//TIMER_2_CTL &= ~0x1;
+	//GPIO_PORT_B_DEN &= ~0x1;
 }

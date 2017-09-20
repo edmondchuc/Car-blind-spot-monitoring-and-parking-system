@@ -13,6 +13,7 @@
 #define GPIO_PORT_B_PCTL (*((volatile unsigned long *) 0x4000552C))
 #define GPIO_PORT_B_DEN (*((volatile unsigned long *) 0x4000551C))
 #define GPIO_PORT_B_DATA (*((volatile unsigned long *) 0x400053FC))
+#define GPIO_PORT_B_DR8R (* ((volatile unsigned long *) 0x40005508))
 	
 // GPIO port A 0x40004000
 #define GPIO_PORT_A_DIR (*((volatile unsigned long *) 0x40004400))

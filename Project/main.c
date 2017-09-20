@@ -33,7 +33,7 @@ extern void Setup_TIMER(void);
 extern void SetupGPIO(void);
 
 
-
+void Buzz(int numOfBeeps, int delay);
 
 int main(void)
 {
@@ -46,20 +46,19 @@ int main(void)
 	//Setup_TIMER();	// TODO: replace
 	setup_timer();
 	
-	disable_buzzer();
 	
 	
 	while(1)	// prevent from ending program.
 	{
-		enable_buzzer();
-		GPIO_PORT_A_DATA |= 0x4;	// TEST
+		//enable_buzzer();
+		//GPIO_PORT_A_DATA |= 0x4;	// TEST
 		GPIO_PORT_A_DATA |= 0x10;
 		util_DelayUs(11);
 		
 		GPIO_PORT_A_DATA &= ~0x10;
-		util_DelayMs(1000);
-		GPIO_PORT_A_DATA &= ~0x4; // TEST
-		disable_buzzer();
+		util_DelayMs(100);
+		//GPIO_PORT_A_DATA &= ~0x4; // TEST
+		//disable_buzzer();
 	}
 }
 
@@ -91,11 +90,12 @@ void TM0_Fall()
 void Buzz(int numOfBeeps, int delay)
 {
 	int i;
-	for(i=0; i<= numOfBeeps; i++)
+	for(i=0; i< numOfBeeps; i++)
 	{
 			enable_buzzer();
 			util_DelayMs(delay);
 			disable_buzzer();
+			util_DelayMs(delay);
 	}
 }
 
@@ -118,15 +118,11 @@ void TM3_Fall()
 	{
 		GPIO_PORT_A_DATA |= 0x4;	// turn on LED3 on pin 2
 		
-		//Buzz(2, 300);
-		
-		enable_buzzer();
 		
 	}
 	else
 	{
 		GPIO_PORT_A_DATA &= ~0x4;	// turn off LED3 on pin 2
-		
 		
 	}
 }
@@ -146,13 +142,21 @@ void TM1_Fall()
 	
 	//print_time(TimeA, TimeB);
 	int diff = difference(Time1A, Time1B);
-	if(diff < 9000 && diff > 3200)
+	if(diff <= 5500 && diff > 3100)
 	{
-		GPIO_PORT_A_DATA |= 0x4;	// turn on LED3 on pin 2
+		Buzz(3, 100);
+	}
+	else if(diff < 7000 && diff > 5500)
+	{
+		//GPIO_PORT_A_DATA |= 0x4;	// turn on LED3 on pin 2
+		//enable_buzzer();
+		Buzz(2, 200);
+		//util_DelayMs(1000);
 	}
 	else
 	{
-		GPIO_PORT_A_DATA &= ~0x4;	// turn off LED3 on pin 2
+		//GPIO_PORT_A_DATA &= ~0x4;	// turn off LED3 on pin 2
+		//disable_buzzer();
 	}
 }
 
