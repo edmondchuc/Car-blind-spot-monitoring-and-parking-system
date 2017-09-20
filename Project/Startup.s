@@ -77,6 +77,7 @@ __heap_limit
 		IMPORT TM3_Fall
 		IMPORT TM1_Rise
 		IMPORT TM1_Fall
+		IMPORT button_ISR
 		
 __Vectors
         DCD     __initial_sp              ; Top of Stack
@@ -96,7 +97,7 @@ __Vectors
         DCD     PendSV_Handler              ; PendSV Handler
         DCD     SysTick_Handler             ; SysTick Handler
 					; External Interrupts
-        DCD     GPIOA_Handler             ;   0: GPIO Port A
+        DCD     button_ISR ;GPIOA_Handler             ;   0: GPIO Port A
         DCD     GPIOB_Handler             ;   1: GPIO Port B
         DCD     GPIOC_Handler             ;   2: GPIO Port C
         DCD     GPIOD_Handler             ;   3: GPIO Port D

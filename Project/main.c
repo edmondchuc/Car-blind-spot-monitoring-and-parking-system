@@ -21,6 +21,9 @@ int Time1B;
 int Time2A;
 int Time2B;
 
+int leftObject = 0;
+int rightObject = 0;
+
 // Belinda's functions
 extern void Initialize_UART0(void);
 extern void OUT2DEC(void);
@@ -37,13 +40,15 @@ void Buzz(int numOfBeeps, int delay);
 
 int main(void)
 {
-	//Initialize_UART0();	// TODO: replace
-	//Test_UART();	// TODO: replace
 	
-//	setup_UART();
+//	setup_UART();	// no longer used, only used for testing
+	
+	
+	
 	setup_GPIO();
 	
-	//Setup_TIMER();	// TODO: replace
+	setup_interrupt();
+	
 	setup_timer();
 	
 	
@@ -60,6 +65,28 @@ int main(void)
 		//GPIO_PORT_A_DATA &= ~0x4; // TEST
 		//disable_buzzer();
 	}
+}
+
+void button_ISR()
+{
+	
+	if((GPIO_PORT_A_RIS & 0x20) == 0x20)	// interrupt on pin 5
+	{
+		if(leftObject)
+		{
+			Buzz(3, 100);
+		}
+		GPIO_PORT_A_ICR |= 0x20;	// clear interrupt flag
+	}
+	else if((GPIO_PORT_A_RIS & 0x40) == 0x40)	// interrupt on pin 6
+	{
+		if(rightObject)
+		{
+			Buzz(3, 100);
+		}
+		GPIO_PORT_A_ICR |= 0x40;	// clear interrupt flag
+	}
+	
 }
 
 void TM0_Rise()
@@ -80,10 +107,12 @@ void TM0_Fall()
 	if(diff < 9000 && diff > 3200)
 	{
 		GPIO_PORT_A_DATA |= 0x8;	// turn on LED0 on pin 3
+		rightObject = 1;
 	}
 	else
 	{
 		GPIO_PORT_A_DATA &= ~0x8;	// turn off LED0 on pin 3
+		rightObject = 0;
 	}
 }
 
@@ -117,13 +146,13 @@ void TM3_Fall()
 	if(diff < 9000 && diff > 3200)
 	{
 		GPIO_PORT_A_DATA |= 0x4;	// turn on LED3 on pin 2
-		
+		leftObject = 1;
 		
 	}
 	else
 	{
 		GPIO_PORT_A_DATA &= ~0x4;	// turn off LED3 on pin 2
-		
+		leftObject = 0;
 	}
 }
 
@@ -142,11 +171,16 @@ void TM1_Fall()
 	
 	//print_time(TimeA, TimeB);
 	int diff = difference(Time1A, Time1B);
-	if(diff <= 5500 && diff > 3100)
+	if(diff <= 5000 && diff > 3100)
+	{
+		//enable_buzzer();
+		Buzz(5, 50);
+	}
+	else if(diff <= 7000 && diff > 5000)
 	{
 		Buzz(3, 100);
 	}
-	else if(diff < 7000 && diff > 5500)
+	else if(diff < 9000 && diff > 7000)
 	{
 		//GPIO_PORT_A_DATA |= 0x4;	// turn on LED3 on pin 2
 		//enable_buzzer();

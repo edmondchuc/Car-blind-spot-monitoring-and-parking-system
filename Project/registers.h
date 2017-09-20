@@ -105,3 +105,12 @@
 #define UART_0_LCRH (*((volatile unsigned long*) 0x4000C02C))
 #define UART_0_FR (*((volatile unsigned long *)0x4000C018)) 
 #define UART_0_DR (*((volatile unsigned long *) 0x4000C000))
+	
+// Port A Interrupt registers 0x40004000
+#define GPIO_PORT_A_IS (*((volatile unsigned long*) 0x40004404))
+#define GPIO_PORT_A_IBE (*((volatile unsigned long*) 0x40004408))
+#define GPIO_PORT_A_IEV (*((volatile unsigned long*) 0x4000440C))
+#define GPIO_PORT_A_IM (*((volatile unsigned long*) 0x40004410))
+#define GPIO_PORT_A_ICR (*((volatile unsigned long*) 0x4000441C))
+#define GPIO_PORT_A_RIS (*((volatile unsigned long*) 0x40004414))
+#define GPIO_PORT_A_MIS (*((volatile unsigned long*) 0x40004418))

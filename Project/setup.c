@@ -34,13 +34,14 @@ void setup_GPIO(void)
 	GPIO_PORT_A_DIR |= 0x8;		// output on pin 3 LED0
 	GPIO_PORT_A_DIR |= 0x10;		// output on pin 4
 	GPIO_PORT_B_DIR |= 0x1;	// output on pin 0 for PWM
-	GPIO_PORT_A_DIR &= ~0x30;	// input on pin 5, 6
+	GPIO_PORT_A_DIR &= ~0x60;	// input on pin 5, 6
 	
 	// set regular port/alternate function
 	GPIO_PORT_B_AFSEL |= 0xFD;	// alternate function on pins 0, 2, 3, 4, 5, 6, 7
 	GPIO_PORT_A_AFSEL	|= 0x3;		// alternate function on pins 0, 1
 	GPIO_PORT_A_AFSEL &= ~0xC;	// set as regular port for pins 2, 3
 	GPIO_PORT_A_AFSEL &= ~0x10;		// set as regulart port for pin 1
+	GPIO_PORT_A_AFSEL &= ~0x60;	// set as regular pins on 5, 6
 	
 	// configure port control/column number for alternate function
 	GPIO_PORT_B_PCTL &= ~0xFFFFFF0F;	// clear bits in pins 0, 2, 3, 4, 5, 6, 7
@@ -50,6 +51,7 @@ void setup_GPIO(void)
 	GPIO_PORT_A_PCTL &= ~0x4;		// set pin 2 as regular GPIO for LED3
 	GPIO_PORT_A_PCTL &= ~0x8;		// set pin 3 as regular GPIO for LED0
 	GPIO_PORT_A_PCTL &= ~0xF0000;		// set pin 1 as regular GPIO
+	GPIO_PORT_A_PCTL &= ~0xFF00000; // set pins 5, 6 as regular GPIO
 		
 	// enable DR8R for PWM
 	GPIO_PORT_B_DR8R |= 0x1;	// enable output drive for 8mA
@@ -59,6 +61,7 @@ void setup_GPIO(void)
 	GPIO_PORT_A_DEN |= 0x3;		// set digital I/O on pins 0, 1
 	GPIO_PORT_A_DEN |= 0xC;		// set digital I/O on pin 2, 3
 	GPIO_PORT_A_DEN	|= 0x10;		// set digital I/O on pin 1
+	GPIO_PORT_A_DEN |= 0x60;	// set digital I/O on pins 5, 6
 }
 
 // --------------------------------------------------------------------------
@@ -164,6 +167,23 @@ void setup_timer(void)
 	TIMER_2_CTL |= 0x1;
 	
 	// enable interrupts after setup
+	EnableInterrupts();
+}
+
+// setup GPIO inputs on port A, pins 5, 6
+void setup_interrupt(void)
+{
+	DisableInterrupts();
+	
+	GPIO_PORT_A_IM &= ~0x60;	// disable interrupts on pins
+	GPIO_PORT_A_IS &= ~0x60;	// set interrupt sensitivity to edge
+	GPIO_PORT_A_IEV |= 0x60;	// set interrupt type to rising edge
+	GPIO_PORT_A_IBE &= ~0x60;	// set interrupt to single edge
+	GPIO_PORT_A_IM |= 0x60;		// enable interrupts on pins
+	
+	NVIC_EN0 |= 0x1;	// enable interrupts for GPIO Port A
+	
+	
 	EnableInterrupts();
 }
 
