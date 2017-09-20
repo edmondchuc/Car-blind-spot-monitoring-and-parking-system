@@ -95,10 +95,14 @@ void TM0_Fall()
 	Time0B = TIMER_0_TBV & 0xFFFF;	// Store the current value
 	TIMER_0_ICR |= 0x400; // event trigger clear
 	int diff = difference(Time0A, Time0B);	// difference between Timer0A interrupt & Timer0B
-	if(diff < 9000 && diff > 3200)	// if distance is within these bounds
+	if(diff < 12000 && diff > 3200)	// if distance is within these bounds
 	{
 		GPIO_PORT_A_DATA |= 0x8;	// turn on LED0 on pin 3
 		rightObject = 1;					// notify other ISR an object has been detected
+		if(diff < 4800 && diff > 3200)
+		{
+			Buzz(5, 50);	// produce sound
+		}
 	}
 	else
 	{
@@ -120,11 +124,14 @@ void TM3_Fall()
 	Time3B = TIMER_3_TBV & 0xFFFF;	// Store the current value
 	TIMER_3_ICR |= 0x400; // event trigger clear
 	int diff = difference(Time3A, Time3B);	// difference between Timer3A interrupt & Timer3B
-	if(diff < 9000 && diff > 3200)	// if distance is within these bounds
+	if(diff < 12000 && diff > 3200)	// if distance is within these bounds
 	{
 		GPIO_PORT_A_DATA |= 0x4;	// turn on LED3 on pin 2
 		leftObject = 1;						// notify other ISR an object has been detected
-		
+		if(diff < 4800 && diff > 3200)
+		{
+			Buzz(5, 50);	// produce sound
+		}
 	}
 	else
 	{

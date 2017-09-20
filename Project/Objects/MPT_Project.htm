@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\MPT_Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\MPT_Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Wed Sep 20 22:52:30 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Thu Sep 21 00:25:47 2017
 <BR><P>
 <H3>Maximum Stack Usage =         24 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-TM1_Fall &rArr; Buzz
+TM0_Fall &rArr; Buzz
 <P>
 <H3>
 Functions with no stack information
@@ -756,15 +756,18 @@ Global Symbols
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;util_DelayMs
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;button_ISR
+<LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM3_Fall
 <LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM1_Fall
+<LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM0_Fall
 </UL>
 
 <P><STRONG><a name="[cc]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, indicate_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[20]"></a>TM0_Fall</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, main.o(i.TM0_Fall))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TM0_Fall
+<P><STRONG><a name="[20]"></a>TM0_Fall</STRONG> (Thumb, 120 bytes, Stack size 8 bytes, main.o(i.TM0_Fall))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = TM0_Fall &rArr; Buzz
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;difference
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzz
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
@@ -782,10 +785,11 @@ Global Symbols
 <P><STRONG><a name="[21]"></a>TM1_Rise</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, main.o(i.TM1_Rise))
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
-<P><STRONG><a name="[30]"></a>TM3_Fall</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, main.o(i.TM3_Fall))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TM3_Fall
+<P><STRONG><a name="[30]"></a>TM3_Fall</STRONG> (Thumb, 120 bytes, Stack size 8 bytes, main.o(i.TM3_Fall))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = TM3_Fall &rArr; Buzz
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;difference
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzz
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
