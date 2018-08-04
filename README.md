@@ -9,5 +9,6 @@
 ## Video Demonstration
 [YouTube video demonstrating the system](https://www.youtube.com/watch?v=CBZHZsfnGhI&t=24s)
 
-###
-Reminder: Originally a repo from Bitbucket, now on GitHub. Future changes should be pushed by using `git push upstream master` instead of to origin.
+## Contact
+Edmond Chuc
+www.edmondchuc.com
